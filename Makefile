@@ -1,3 +1,9 @@
+NAME = Cub3D
+
+SRC = parsing.c \
+
+OBJS = ${SRC:.c=.o}
+
 INCL_D	=	includes/
 
 LIBFT_D	=	libft/
@@ -16,7 +22,7 @@ RM		=	rm -f
 
 all		:	${NAME}
 
-%.o		:	%.c $(addprefix ${INCL_D}, fdf.h)
+%.o		:	%.c $(addprefix ${INCL_D}, cub3d.h)
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCL_D} -I ${LIBFT_D} -I ${LIBX_D}
 
 ${LIBFT}:
@@ -25,7 +31,7 @@ ${LIBFT}:
 ${LIBX}	:
 			make -C ${LIBX_D}
 
-${NAME}	:	${LIBFT} ${LIBX} ${OBJS}
+${NAME}	:	${LIBFT} ${OBJS} ${LIBX}
 			${CC} ${OBJS} -o ${NAME} ${LIBFT} ${LIBX} -lXext -lX11 -lm
 
 clean	:
