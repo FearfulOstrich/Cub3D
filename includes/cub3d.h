@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 12:41:59 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:51:13 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_map
 {
 	unsigned int	height;
 	unsigned int	length;
-	t_list			**map;
+	char			**map;
 }	t_map;
 
 typedef struct s_character
