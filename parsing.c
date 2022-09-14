@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/13 17:35:57 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/14 12:37:57 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,24 @@ static int check_arg(t_global *global)
 static int	fill_color(t_global *global, int t, char *tmp)
 {
 	char **str;
+	int		i;
 
+	i = 0;
 	if (check_arg(global) == 1)
 	{
 		printf("Erreur args format pas correct NO EA WE SO, try AGAIN.");
 		return (1);
 	}
 	str = ft_split(tmp, ',');
+	while(str[i])
+	{
+		i++;
+	}
+	if (i < 3 || i > 3)
+	{
+		write(1, "Error color format\n", 19);
+		return (-1);
+	}
 	//pa oublier protection si pas assez grand la chaine, genre si les args sont mauvais.
 	if (t == 4)
 	{
@@ -72,6 +83,24 @@ static int	fill_color(t_global *global, int t, char *tmp)
 	}
 	return (0);
 }
+// int	fill_map(char *str, t_global *global)
+// {
+// 	t_list	*new;
+
+// 	new = ft_lstnew(str);
+// 	printf("str == %s", str);
+// 	ft_lstadd_back(global->map->map, new);
+// 	return(0);
+// }
+
+// void 	print_map(t_global *global)
+// {
+// 	while(global->map->map->content != NULL)
+// 	{
+// 		printf("%s", (char *)global->map->map->content);
+// 		global->map->map->content = global->map->map->next;
+// 	}
+// }
 
 int	parsing(int fd)
 {
@@ -82,6 +111,7 @@ int	parsing(int fd)
 
 	i = 0;
 	t = 0;
+	//rajouter si le nombre d'arguments n'est ps le bn ca tej si c'est pas un .cub ca tej !
 	global = malloc(sizeof(*global));
 	if (!global || global ==NULL)
 		return (0);
@@ -94,49 +124,71 @@ int	parsing(int fd)
 		{
 			if (t == 0 && tmp[0] == 'N' && tmp[1] == 'O')
 			{
-				global->NO = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
+				if (tmp[0] == 'N' && tmp[1] == 'O')
+					global->NO = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
+				else
+				{
+					write(1, "Error NO\n",9);
+					return(-1);
+				}
 				printf("global->NO = %s\n", global->NO);
 				t++;
 			}
-			else if (t == 1 && tmp[0] == 'S' && tmp[1] == 'O')
+			else if (t == 1)
 			{
-				global->SO = ft_substr(tmp, 3, (ft_strlen(tmp) - 4)); 
+				if (tmp[0] == 'S' && tmp[1] == 'O')
+					global->SO = ft_substr(tmp, 3, (ft_strlen(tmp) - 4)); 
+				else
+				{
+					write(1, "Error SO\n",9);
+					return(-1);
+				}
 				printf("global->SO = %s\n", global->SO);
 				t++;
 			}
-			else if (t == 3 && tmp[0] == 'W' && tmp[1] == 'E')
+			
+			else if (t == 2)
 			{
-				global->WE = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
-	printf("global->WE = %s\n", global->WE);
+				if (tmp[0] == 'W' && tmp[1] == 'E')
+					global->WE = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
+				else
+				{
+					write(1, "Error WE\n",9);
+					return(-1);
+				}
 				t++;
+				printf("global->WE = %s\n", global->WE);
 			}
-			else if (t == 2 && tmp[0] == 'E' && tmp[1] == 'A')
+			else if (t == 3)
 			{
-				global->EA = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
-	printf("global->EA = %s\n", global->EA);
+				if (tmp[0] == 'E' && tmp[1] == 'A')
+					global->EA = ft_substr(tmp, 3, (ft_strlen(tmp) - 4));
+				else
+				{
+					write(1, "Error EA\n",9);
+					return(-1);
+				}
 				t++;
+				printf("global->EA = %s\n", global->EA);
 			}
 			else if (t == 4 || t == 5)
 			{
-				// printf("global->EA = %s\n", global->EA);
-				// if (global->EA == NULL)
-				// {
-				// 	printf("TG");
-				// 	return(1);
-				// }
-				// if (check_arg(global) == 1)
-				// {
-				// 	printf("Erreur args format pas correct NO EA WE SO, try AGAIN.");
-				// 	return (1);
-				// }
-				fill_color(global, t, ft_substr(tmp, 2, ft_strlen(tmp)-3)); //recuperer ici ls infos de l couleur a remettre bien dans le tableau
+				if (fill_color(global, t, ft_substr(tmp, 2, ft_strlen(tmp)-3)) == -1) //recuperer ici ls infos de l couleur a remettre bien dans le tableau
+					return (-1);
 				t++;
 			}
 			printf("t = %i", t);
 			i++;
 		}
 	}
-	//MODIFIER LE GNL POUR ENLEVER LE '\n'
+	while(tmp)
+	{
+		tmp = get_next_line(fd);
+	printf("str == %s", tmp);
+
+		// fill_map(tmp, global);
+	}
+	// print_map(global);
 	printf("global->NO = %s\n", global->NO);
 	printf("global->SO = %s\n", global->SO);
 	printf("global->WE = %s\n", global->WE);
