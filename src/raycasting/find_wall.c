@@ -6,38 +6,42 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:21:45 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/13 18:03:20 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:46:52 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_vector	init_edge(t_RC env)
+t_edge	init_edge(t_RC tools_RC)
 {
 	t_edge	edge;
 
-	if (v_norm(env.dx0) > v_norm(env.dY0))
+	edge.c_x = 0;
+	edge.c_y = 0;
+	if (v_norm(tools_RC.dx0) > v_norm(tools_RC.dy0))
 	{
-		edge.v_edge = env.dY0;
+		edge.v_edge = tools_RC.dy0;
+		edge.c_y++;
 		edge.horizontal = 1;
 	}
 	else
 	{
-		edge.v_edge = env.dX0;
+		edge.v_edge = tools_RC.dx0;
+		edge.c_x++;
 		edge.horizontal = 0;
 	}
 	return (edge);
 }
 
-t_bool	is_wall(t_vector pos, t_edge edge, t_map map)
+t_bool	is_wall(t_vector pos, t_edge edge, t_env env)
 {
-	int	ix_x;
-	int	ix_y;
+	unsigned int	ix_x;
+	unsigned int	ix_y;
 
 	if (edge.horizontal)
 	{
 		ix_x = floor(v_add(pos, edge.v_edge).x);
-		if (v_edge.y < 0)
+		if (edge.v_edge.y < 0)
 			ix_y = round(v_add(pos, edge.v_edge).y) - 1;
 		else
 			ix_y = round(v_add(pos, edge.v_edge).y);
@@ -45,25 +49,54 @@ t_bool	is_wall(t_vector pos, t_edge edge, t_map map)
 	else
 	{
 		ix_y = floor(v_add(pos, edge.v_edge).y);
-		if (v_edge.x > 0)
+		if (edge.v_edge.x > 0)
 			ix_x = round(v_add(pos, edge.v_edge).x);
 		else
 			ix_x = round(v_add(pos, edge.v_edge).x) - 1;
 	}
-	if (map.map[ix_y][ix_x] == '1')
+	printf("checking map idx: (%d, %d)\n", ix_y, ix_x);
+	printf("horizontal slice of map at ix %d: %s\n", ix_y, env.map[ix_y]);
+	if (env.map[ix_y][ix_x] == '1')
 		return (1);
 	return (0);
 }
 
-t_edge	find_wall(t_vector pos, t_RC env, t_map map)
+void	update_edge(t_edge *edge, t_RC tools_RC)
 {
-	t_edge	edge;
+	t_vector	next_x;
+	t_vector	next_y;
 
-	edge = init_edge(env);
+	next_x = v_add(tools_RC.dx0, v_scale(tools_RC.dx, edge->c_x));
+	next_y = v_add(tools_RC.dy0, v_scale(tools_RC.dy, edge->c_y));
+	// If next edge is still y constant (+dy)
+	if (v_norm(next_x) > v_norm(next_y))
+	{
+		edge->v_edge = next_y;
+		edge->horizontal = 1;
+		edge->c_y++;
+	}
+	else
+	{
+		edge->v_edge = next_x;
+		edge->horizontal = 0;
+		edge->c_x++;
+	}
+	return ;
+}
+
+t_edge	find_wall(t_vector pos, t_RC tools_RC, t_env map)
+{
+	t_edge			edge;
+
+	edge = init_edge(tools_RC);
 	while (1)
 	{
+		printf("now checking:\n");
+		printf("\tv_edge = ( dx0 + %u * dx; dy0 + %u * dy)", edge.c_x, edge.c_y);
+		printf(" = ( %f, %f )\n", edge.v_edge.x, edge.v_edge.y);
+		fflush(stdout);
 		if (is_wall(pos, edge, map))
 			return (edge);
-		edge = update_edge(edge, env);
+		update_edge(&edge, tools_RC);
 	}
 }

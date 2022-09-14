@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:44:03 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/13 17:27:04 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/14 11:01:27 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_vector	v_add(t_vector v1, t_vector v2)
 	return (res);
 }
 
-t_vector	v_scale(t_vector v, float	alpha)
+t_vector	v_scale(t_vector v, float alpha)
 {
 	t_vector	res;
 

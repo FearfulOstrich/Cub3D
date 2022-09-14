@@ -1,42 +1,110 @@
-INCL_D	=	includes/
+#------------------------------------------------------------------------------#
+#                                                                              #
+#                               DECLARATIONS                                   #
+#                                                                              #
+#------------------------------------------------------------------------------#
 
-LIBFT_D	=	libft/
+#------------------------------------#
+#             COMPILATION            #
+#------------------------------------#
 
-LIBX_D	=	minilibx/
+NAME			=	cub3D
 
-LIBFT	=	${LIBFT_D}libft.a
+CC				=	clang
+CFLAG			=	-Wall -Wextra -Werror -g3
+PROJINC_FLAG	=	-I includes
 
-LIBX	=	${LIBX_D}libmlx.a
+#------------------------------------#
+#                LIBFT               #
+#------------------------------------#
 
-CC		=	gcc
+LIBFT_DIR		=	libft/
+LIBFT_A			=	$(LIBFT_DIR)libft.a
 
-CFLAGS	=	-Wall -Werror -Wextra
+LIBFTINC_FLAG	=	-I $(LIBFT_DIR)
 
-RM		=	rm -f
+#------------------------------------#
+#                MLX                 #
+#------------------------------------#
 
-all		:	${NAME}
+LIBMLX_DIR		=	minilibx/
+LIBMLX_A		=	$(LIBMLX_DIR)libmlx.a
 
-%.o		:	%.c $(addprefix ${INCL_D}, fdf.h)
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCL_D} -I ${LIBFT_D} -I ${LIBX_D}
+LIBMLXINC_FLAG	=	-I $(LIBMLX_DIR)
 
-${LIBFT}:
-			make -C ${LIBFT_D}
+#------------------------------------#
+#               SOURCES              #
+#------------------------------------#
 
-${LIBX}	:
-			make -C ${LIBX_D}
+SRC_DIR		=	src/
 
-${NAME}	:	${LIBFT} ${LIBX} ${OBJS}
-			${CC} ${OBJS} -o ${NAME} ${LIBFT} ${LIBX} -lXext -lX11 -lm
+SRC_MAIN	=	main_mlx.c
 
-clean	:
-			${RM} ${OBJS}
-			make clean -C ${LIBFT_D}
+SRC_RC		=	find_wall.c init_ray.c
 
-fclean	:	clean
-			${RM} ${NAME}
-			make fclean -C ${LIBFT_D}
-			make clean -C ${LIBX_D}
+SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c
 
-re		:	fclean all
+SRC_UTILS	=	vector.c
 
-.PHONY	:	all clean fclean re
+SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
+				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
+				$(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
+				$(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
+
+#------------------------------------#
+#               OBJECTS              #
+#------------------------------------#
+
+OBJ_DIR		=	obj/
+OBJ			=	$(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
+
+#------------------------------------#
+#               HEADER               #
+#------------------------------------#
+
+HEADER	=	includes/cub3d.h
+
+#------------------------------------#
+#              SUMMARY               #
+#------------------------------------#
+
+LIB_ARCHIVE	=	$(LIBFT_A) $(LIBMLX_A)
+INC_FLAG	=	$(PROJINC_FLAG) $(LIBFTINC_FLAG) $(LIBMLXINC_FLAG)
+LNK_FLAG	=	-lXext -lX11 -lm
+
+#------------------------------------------------------------------------------#
+#                                                                              #
+#                                   RULES                                      #
+#                                                                              #
+#------------------------------------------------------------------------------#
+
+all: $(LIBFT_A) $(LIBMLX_A) $(NAME)
+
+$(NAME): $(OBJ)
+		$(CC) $(CFLAG) $(OBJ) -o $(NAME) $(LIB_ARCHIVE) $(LNK_FLAG)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
+	$(info OBJ is $@)
+	$(info SRC is $<)
+	@mkdir -p `dirname $@`
+	$(CC) $(CFLAG) -c $< -o $@ $(INC_FLAG)
+
+$(LIBFT_A):
+		make -C $(LIBFT_DIR)
+
+$(LIBMLX_A):
+		make -C $(LIBMLX_DIR)
+
+clean:
+		rm -rf $(OBJ_DIR)
+		make -C $(LIBFT_DIR) clean
+		make -C $(LIBMLX_DIR) clean
+
+fclean: clean
+		rm -rf $(NAME)
+		rm -rf $(LIBFT_A)
+		rm -rf $(LIBMLX_A)
+
+re: fclean all
+
+.PHONY: all clean fclean re
