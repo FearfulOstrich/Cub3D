@@ -84,8 +84,6 @@ $(NAME): $(OBJ)
 		$(CC) $(CFLAG) $(OBJ) -o $(NAME) $(LIB_ARCHIVE) $(LNK_FLAG)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
-	$(info OBJ is $@)
-	$(info SRC is $<)
 	@mkdir -p `dirname $@`
 	$(CC) $(CFLAG) -c $< -o $@ $(INC_FLAG)
 
