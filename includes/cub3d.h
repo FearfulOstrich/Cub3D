@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/13 13:59:09 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/15 10:41:39 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define _CUB3D_H_
 
 # include <stdio.h>
+#include "libft.h"
 
 typedef struct s_vector
 {
@@ -47,5 +48,10 @@ typedef struct s_global
 	t_map		*map;
 	t_character	*pov;
 }	t_global;
+
+// Parsing
+t_bool	valid_map(t_map map);
+t_bool	valid_color(t_color color);
+t_bool	valid_texture(char *text_path);
 
 #endif
