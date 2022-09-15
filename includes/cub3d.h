@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 10:41:39 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/15 11:41:13 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct s_color
 	unsigned char	G;
 	unsigned char	B;
 }	t_color;
+
+typedef struct s_texture
+{
+	char	*path;
+	int		width;
+	int		height;
+	t_img	*img;
+}	t_texture;
 
 typedef struct s_map
 {
