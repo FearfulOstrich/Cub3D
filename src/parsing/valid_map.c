@@ -6,11 +6,11 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:04:25 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 10:23:11 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/15 13:44:51 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.g"
+#include "cub3d.h"
 
 t_bool	valid_tile(char c)
 {
