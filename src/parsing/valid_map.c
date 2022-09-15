@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:04:25 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 13:44:51 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/15 14:29:26 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_bool	valid_tile(char c)
 		return (0);
 }
 
-t_bool	valid_neighbors(char **grid, int x, int y)
+t_bool	valid_neighbors(char **grid, int y, int x)
 {
 	int	i;
 	int	j;
@@ -40,21 +40,27 @@ t_bool	valid_neighbors(char **grid, int x, int y)
 	{
 		j = -1;
 		while (j++ < 2)
-			if (valid_tile(grid[x + i][y + j]) == 0)
+		{
+			if (abs(y) + abs(x) != 1)
+				continue ;
+			if (ft_strlen(grid[y + i]) <= x)
 				return (0);
+			if (valid_tile(grid[y + i][x + j]) == 0)
+				return (0);
+		}
 	}
 	return (1);
 }
 
-t_bool	valid_tile(t_map map, int x, int y)
+t_bool	valid_tile(t_map map, int y, int x)
 {
-	if (map.grid[x][y] != '1')
+	if (map.grid[y][x] != '1')
 	{
-		if ((x == 0) || (x == map.height - 1))
+		if ((y == 0) || (y == map.height - 1))
 			return (0);
-		if ((y == 0) || (y == map.width - 1))
+		if ((x == 0) || (x == ft_strlen(map.grid[y]) - 1))
 			return (0);
-		return (neighbours_valid(map.grid, x, y));
+		return (neighbours_valid(map.grid, y, x));
 	}
 	return (1);
 }
@@ -68,7 +74,7 @@ t_bool	valid_map(t_map map)
 	j = -1;
 	while (++i < map.height)
 	{
-		while (++j < map.width)
+		while (++j < ft_strlen(map.grid[i]))
 		{
 			if ((map.grid[i][j] != ' ') && valid_tile(map.grid, i, j) == 0)
 				return (0);
