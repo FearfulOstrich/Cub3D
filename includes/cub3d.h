@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 15:51:13 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/15 14:35:39 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ typedef struct s_vector
 
 typedef struct s_color
 {
-	unsigned char	R;
-	unsigned char	G;
-	unsigned char	B;
+	unsigned int	R;
+	unsigned int	G;
+	unsigned int	B;
 }	t_color;
 
 typedef	char*	t_texture;
