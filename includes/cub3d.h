@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 15:02:39 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/15 17:23:23 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "libft.h"
+// # include "mlx.h"
 
 // # define NO 0;
 // # define SO 1;
@@ -40,13 +41,14 @@ typedef struct s_color
 	int	B;
 }	t_color;
 
-typedef struct s_texture
-{
-	char	*path;
-	int		width;
-	int		height;
-	t_img	*img;
-}	t_texture;
+typedef char*	t_texture;
+// typedef struct s_texture
+// {
+// 	char	*path;
+// 	int		width;
+// 	int		height;
+// 	t_img	*img;
+// }	t_texture;
 
 typedef struct s_map
 {
@@ -64,18 +66,19 @@ typedef struct s_character
 
 typedef struct s_global
 {
-	t_map		*map;
+	t_map		*grid;
+	char		**map;
 	t_color		floor;
 	t_color		ceiling;
 	t_texture	NO;
 	t_texture	SO;
 	t_texture	WE;
 	t_texture	EA;
-	t_env		env;
+	// t_env		env;
 	t_character	*myself;
 	void		*mlx;
 	void		*win;
-	t_img		*img;
+	// t_img		*img;
 }	t_global;
 
 // Parsing

@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/15 14:33:59 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/15 18:17:26 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 static int	check_empty_line(char *str)
 {
-	int i;
-	int flag;
+	int	i;
+	int	flag;
 
 	i = 0;
 	flag = 0;
-	if(!str || str[0] == '\n')
-				return(1);
+	if (!str || str[0] == '\n')
+		return(1);
 	while(str[i])
 	{
 		if(str[i] == ' ')
@@ -35,7 +35,8 @@ static int	check_empty_line(char *str)
 
 int	texture_not_set(t_global *global)
 {
-	if (global->NO && global->SO && global->WE && global->EA && global->floor.R && global->ceiling.R)
+	if (global->NO && global->SO && global->WE && global->EA \
+		&& global->floor.R && global->ceiling.R)
 		return(1);
 	else
 		return(0);
@@ -46,12 +47,12 @@ char *get_path(char *tmp, char *str)
 	char	*path;
 	int			i;
 
-	i = 0;
 	if (!tmp || !str)
 		return (0);
 	path = ft_strnstr(tmp, str, ft_strlen(str));
 	if (!path)
 		return (0);
+	i = ft_strlen(str);
 	while (path[i] == ' ')
 		i++;
 	if (i != 0)
@@ -59,7 +60,7 @@ char *get_path(char *tmp, char *str)
 	return (path);
 }
 
-void	set_color(char *str, t_global *global, char c)
+int	set_color(char *str, t_global *global, char c)
 {
 	int			i;
 	char	**tmp;
@@ -70,6 +71,13 @@ void	set_color(char *str, t_global *global, char c)
 	str = ft_substr(str, i, ft_strlen(str) - i);
 	str = ft_strtrim(str, " ");
 	tmp = ft_split(str, ',');
+	while(tmp[i])
+		i++;
+	if (i != 3)
+	{
+		printf("Erreur couleuuuuur");
+		return(-1);
+	}
 	if (c == 'F' && !global->floor.R)
 	{
 		global->floor.R = ft_atoi(tmp[0]);
@@ -83,33 +91,86 @@ void	set_color(char *str, t_global *global, char c)
 		global->ceiling.B = ft_atoi(tmp[2]);
 	}
 	else 
+	{
 		write (1, "Error color\n", 12);
+		return (-1);
+	}
+	return (0);
 }
 int	set_params(char *str, t_global *global)
 {
-	char *tmp;
+	char	*tmp;
 	
 	tmp = ft_strtrim(str, " ");
 	if (!tmp || tmp[0] == ' ')
 		return (0);
-	if (get_path(tmp, "NO") != 0)
+	else if (get_path(tmp, "NO") != 0 && !global->NO)
 		global->NO = get_path(tmp,"NO");
-	if (get_path(tmp, "WE") != 0)
+	else if (get_path(tmp, "WE") != 0 && !global->WE)
 		global->WE = get_path(tmp, "WE");
-	if ( get_path(tmp, "EA") != 0)
+	else if ( get_path(tmp, "EA") != 0 && !global->EA)
 		global->EA = get_path(tmp, "EA");
-	if ( get_path(tmp, "SO") != 0)
+	else if ( get_path(tmp, "SO") != 0 && !global->SO)
 		global->SO = get_path(tmp, "SO");
-	if (get_path(tmp, "F") != 0)
+	else if (get_path(tmp, "F") != 0)
 		set_color(get_path(tmp, "F"), global, 'F');
-	if (get_path(tmp, "C") != 0)
+	else if (get_path(tmp, "C") != 0)
 		set_color(get_path(tmp, "C"), global, 'C');
-	if (!get_path(tmp, "NO") && !get_path(tmp, "WE") && !get_path(tmp, "EA") \
-		&& !get_path(tmp, "SO") && !get_path(tmp, "F") && !get_path(tmp, "C"))
+	else
+		return(-1);
+	return (0);
+}
+char **dup_doublechartab(char **tab)
+{
+	char	**tmp;
+	int			i;
+
+	i = 0;
+	while(tab[i])
+		i++;
+	tmp = (char **) malloc(sizeof(char *)* (i + 3));
+	if (!tmp)
+		return (NULL);
+	i = 0;
+	while(tab[i])
 	{
-		printf("mp aui pose probleme == %s", tmp);
-			return (-1);
+		tmp[i] = ft_strdup(tab[i]);
+		printf("tmp[i] == %s\n", tmp[i]);
+		i++;
 	}
+	tab[i] = '\0';
+	ft_free_tab(tab);
+	return (tmp);
+}
+
+int	fill_map(t_global *global, char *str)
+{
+	char **tmp;
+	int		i;
+
+	i = 0;
+	if (!global->map)
+	{
+		global->map = (char **)malloc(sizeof(char *)*1);
+		global->map[0] = ft_strdup(str);
+		printf("lol global->map[%i] %s", i,  global->map[i]);
+		return (0);
+	}
+	tmp = dup_doublechartab(global->map);
+	while(tmp[i])
+		i++;
+	global->map = (char **)malloc(sizeof(char *) * (i + 3));
+	if (!global->map)
+		return (-1);
+	i = 0;
+	while (tmp[i])
+	{
+		global->map[i] = ft_strdup(tmp[i]);
+	printf("global->map[%i] %s", i,  global->map[i]);
+		i++;
+	}
+	global->map[i] = ft_strdup(str);
+	global->map[++i]= '\0';
 	return (0);
 }
 
@@ -128,18 +189,30 @@ int	parsing(int fd)
 		if (check_empty_line(tmp) == 0)
 		{
 			if (set_params(tmp, global) != 0)
+			{
+				write(1, "Error params\n", 13);
 				return (-1);
+			}
 		}
 	}
+	tmp = get_next_line(fd);
 	if (!tmp)
 	{
 		write (1, "Error\n", 6);
 		return (-1);
 	}
-	// while (tmp)
-	// {
-		
-	// }
+	while (check_empty_line(tmp)!= 0)
+	{
+		tmp = get_next_line(fd);
+	}
+	while (tmp && check_empty_line(tmp)== 0)
+	{
+		// printf("tmp == %s\n", tmp);
+		fill_map(global, tmp);
+		// if (!global->grid->map)
+		// 	return(-1);
+		tmp = get_next_line(fd);
+	}
 	printf("global->NO = %s\n", global->NO);
 	printf("global->SO = %s\n", global->SO);
 	printf("global->WE = %s\n", global->WE);
