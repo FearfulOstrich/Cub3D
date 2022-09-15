@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 11:41:13 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/15 13:41:13 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct s_vector
 
 typedef struct s_color
 {
-	unsigned char	R;
-	unsigned char	G;
-	unsigned char	B;
+	int	R;
+	int	G;
+	int	B;
 }	t_color;
 
 typedef struct s_texture
@@ -53,8 +53,11 @@ typedef struct s_character
 
 typedef struct s_global
 {
-	t_map		*map;
-	t_character	*pov;
+	t_env		env;
+	t_character	*myself;
+	void		*mlx;
+	void		*win;
+	t_img		*img;
 }	t_global;
 
 // Parsing
