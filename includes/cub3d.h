@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 10:54:36 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 11:22:14 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ t_vector	v_create(float x, float y);
 float		v_norm(t_vector v);
 t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
+t_vector	v_rotate(t_vector v, int angle);
 
 // Parsing
 t_bool	valid_map(t_env map);
