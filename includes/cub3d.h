@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:36 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:53:53 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_texture
 typedef struct s_env
 {
 	unsigned int	height;
-	unsigned int	length;
 	char			**map;
 }	t_env;
 
