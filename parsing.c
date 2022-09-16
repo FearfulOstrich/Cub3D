@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/16 10:39:04 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:46:28 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,26 +145,26 @@ int	fill_map(t_global *global, char *str)
 	int		i;
 
 	i = 0;
-	if (!global->map)
+	if (!global->grid->map)
 	{
-		global->map = (char **)malloc(sizeof(char *)*1);
-		global->map[0] = ft_strdup(str);
+		global->grid->map = (char **)malloc(sizeof(char *)*1);
+		global->grid->map[0] = ft_strdup(str);
 		return (0);
 	}
-	tmp = dup_doublechartab(global->map);
+	tmp = dup_doublechartab(global->grid->map);
 	while(tmp[i])
 		i++;
-	global->map = (char **)malloc(sizeof(char *) * (i + 3));
-	if (!global->map)
+	global->grid->map = (char **)malloc(sizeof(char *) * (i + 3));
+	if (!global->grid->map)
 		return (-1);
 	i = 0;
 	while (tmp[i])
 	{
-		global->map[i] = ft_strdup(tmp[i]);
+		global->grid->map[i] = ft_strdup(tmp[i]);
 		i++;
 	}
-	global->map[i] = ft_strdup(str);
-	global->map[++i]= '\0';
+	global->grid->map[i] = ft_strdup(str);
+	global->grid->map[++i]= '\0';
 	return (0);
 }
 
@@ -174,8 +174,8 @@ int	parsing(int fd)
 	int				i;
 	t_global	*global;
 
-	//rajouter si le nombre d'arguments n'est ps le bn ca tej si c'est pas un .cub ca tej !
 	global = malloc(sizeof(*global));
+	global->grid = malloc(sizeof(t_map)*1);
 	if (!global || global == NULL)
 		return (0);
 	while(tmp && texture_not_set(global) == 0)
@@ -216,9 +216,9 @@ int	parsing(int fd)
 	printf("ceiling G == %i", global->ceiling.G);
 	printf("ceiling B == %i\n", global->ceiling.B);
 	i = 0;
-	while(global->map[i])
+	while(global->grid->map[i])
 	{
-		printf("global->map[%i] = %s\n", i, global->map[i]);
+		printf("global->grid->map[%i] = %s\n", i, global->grid->map[i]);
 		i++;
 	}
 	return(0);

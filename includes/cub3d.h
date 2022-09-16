@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 17:23:23 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:42:54 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_character
 typedef struct s_global
 {
 	t_map		*grid;
-	char		**map;
 	t_color		floor;
 	t_color		ceiling;
 	t_texture	NO;
