@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 16:31:15 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 16:40:31 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,28 @@ int	key_hook(int key, t_global *global)
 		printf("global->myself->pos.y == %f", global->myself->pos.y);}
 	if (key == 97)
 	{
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 		global->myself->dir = v_rotate(global->myself->dir, -90);
 		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+			printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 	}
 	if (key == 100)
 	{
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 		global->myself->dir = v_rotate(global->myself->dir, 90);
 		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+				printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 	}
 	if (key == 65363)
 		global->myself->dir = v_rotate(global->myself->dir,  1); //changer ici la valeur du 1 par je ne sais quoi 
 	if (key == 65361)
 		global->myself->dir = v_rotate(global->myself->dir, 1); //changer ici la valeur du 1 par je ne sais quoi.
-	else
-		printf("%d\n", key);
+	// else
+	printf("%d\n", key);
 	return (0);
 }
 
