@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/16 10:46:28 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:52:59 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ int	set_color(char *str, t_global *global, char c)
 		global->ceiling.B = ft_atoi(tmp[2]);
 	}
 	else 
-	{
-		write (1, "Error color\n", 12);
 		return (-1);
-	}
 	return (0);
 }
 int	set_params(char *str, t_global *global)
@@ -110,9 +107,9 @@ int	set_params(char *str, t_global *global)
 	else if ( get_path(tmp, "SO") != 0 && !global->SO)
 		global->SO = get_path(tmp, "SO");
 	else if (get_path(tmp, "F") != 0)
-		set_color(get_path(tmp, "F"), global, 'F');
+		return(set_color(get_path(tmp, "F"), global, 'F'));
 	else if (get_path(tmp, "C") != 0)
-		set_color(get_path(tmp, "C"), global, 'C');
+		return(set_color(get_path(tmp, "C"), global, 'C'));
 	else
 		return(-1);
 	return (0);
