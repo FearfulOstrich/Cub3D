@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:44:03 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 11:21:54 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 11:28:21 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ t_vector	v_scale(t_vector v, float alpha)
 	return (res);
 }
 
-// angle in degrees
-t_vector	v_rotate(t_vector v, int angle)
-{
-	t_vector	res;
-	float		rad_angle;
-
-	return (res);
-}
+// // angle in degrees
+// t_vector	v_rotate(t_vector v, int angle)
+// {
+// 	t_vector	res;
+// 	float		rad_angle;
+//
+// 	return (res);
+// }
