@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 10:53:53 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:54:36 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_edge
 // Window monitoring
 t_bool  init_global_env(t_global *env);
 void    del_global_env(t_global *env);
-t_bool  monitor_env(t_global *env);
+t_bool  monitor(t_global *env);
 //// hooks
 int	key_hook(int key, t_global	*global);
 int	mouse_hook(int key, t_global	*global);
