@@ -6,10 +6,9 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/16 10:52:59 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:28:52 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "includes/cub3d.h"
 
@@ -21,10 +20,10 @@ static int	check_empty_line(char *str)
 	i = 0;
 	flag = 0;
 	if (!str || str[0] == '\n')
-		return(1);
-	while(str[i])
+		return (1);
+	while (str[i])
 	{
-		if(str[i] == ' ')
+		if (str[i] == ' ')
 			flag++;
 		i++;
 	}
@@ -37,15 +36,15 @@ int	texture_not_set(t_global *global)
 {
 	if (global->NO && global->SO && global->WE && global->EA \
 		&& global->floor.R && global->ceiling.R)
-		return(1);
+		return (1);
 	else
-		return(0);
+		return (0);
 }
 
-char *get_path(char *tmp, char *str)
+char	*get_path(char *tmp, char *str)
 {
 	char	*path;
-	int			i;
+	int		i;
 
 	if (!tmp || !str)
 		return (0);
@@ -62,19 +61,19 @@ char *get_path(char *tmp, char *str)
 
 int	set_color(char *str, t_global *global, char c)
 {
-	int			i;
+	int		i;
 	char	**tmp;
 
 	i = 0;
-	while(str[i] == 'F' || str[i] == 'C')
+	while (str[i] == 'F' || str[i] == 'C')
 		i++;
 	str = ft_substr(str, i, ft_strlen(str) - i);
 	str = ft_strtrim(str, " ");
 	tmp = ft_split(str, ',');
-	while(tmp[i])
+	while (tmp[i])
 		i++;
 	if (i != 3)
-		return(-1);
+		return (-1);
 	if (c == 'F' && !global->floor.R)
 	{
 		global->floor.R = ft_atoi(tmp[0]);
@@ -87,46 +86,48 @@ int	set_color(char *str, t_global *global, char c)
 		global->ceiling.G = ft_atoi(tmp[1]);
 		global->ceiling.B = ft_atoi(tmp[2]);
 	}
-	else 
+	else
 		return (-1);
 	return (0);
 }
+
 int	set_params(char *str, t_global *global)
 {
 	char	*tmp;
-	
+
 	tmp = ft_strtrim(str, " ");
 	if (!tmp || tmp[0] == ' ')
 		return (0);
 	else if (get_path(tmp, "NO") != 0 && !global->NO)
-		global->NO = get_path(tmp,"NO");
+		global->NO = get_path(tmp, "NO");
 	else if (get_path(tmp, "WE") != 0 && !global->WE)
 		global->WE = get_path(tmp, "WE");
-	else if ( get_path(tmp, "EA") != 0 && !global->EA)
+	else if (get_path(tmp, "EA") != 0 && !global->EA)
 		global->EA = get_path(tmp, "EA");
-	else if ( get_path(tmp, "SO") != 0 && !global->SO)
+	else if (get_path(tmp, "SO") != 0 && !global->SO)
 		global->SO = get_path(tmp, "SO");
 	else if (get_path(tmp, "F") != 0)
-		return(set_color(get_path(tmp, "F"), global, 'F'));
+		return (set_color(get_path(tmp, "F"), global, 'F'));
 	else if (get_path(tmp, "C") != 0)
-		return(set_color(get_path(tmp, "C"), global, 'C'));
+		return (set_color(get_path(tmp, "C"), global, 'C'));
 	else
-		return(-1);
+		return (-1);
 	return (0);
 }
-char **dup_doublechartab(char **tab)
+
+char	**dup_doublechartab(char **tab)
 {
 	char	**tmp;
-	int			i;
+	int		i;
 
 	i = 0;
-	while(tab[i])
+	while (tab[i])
 		i++;
-	tmp = (char **) malloc(sizeof(char *)* (i + 3));
+	tmp = (char **) malloc(sizeof(char *) * (i + 3));
 	if (!tmp)
 		return (NULL);
 	i = 0;
-	while(tab[i])
+	while (tab[i])
 	{
 		tmp[i] = ft_strdup(tab[i]);
 		i++;
@@ -138,18 +139,18 @@ char **dup_doublechartab(char **tab)
 
 int	fill_map(t_global *global, char *str)
 {
-	char **tmp;
+	char	**tmp;
 	int		i;
 
 	i = 0;
 	if (!global->grid->map)
 	{
-		global->grid->map = (char **)malloc(sizeof(char *)*1);
+		global->grid->map = (char **)malloc(sizeof(char *) * 1);
 		global->grid->map[0] = ft_strdup(str);
 		return (0);
 	}
 	tmp = dup_doublechartab(global->grid->map);
-	while(tmp[i])
+	while (tmp[i])
 		i++;
 	global->grid->map = (char **)malloc(sizeof(char *) * (i + 3));
 	if (!global->grid->map)
@@ -161,21 +162,21 @@ int	fill_map(t_global *global, char *str)
 		i++;
 	}
 	global->grid->map[i] = ft_strdup(str);
-	global->grid->map[++i]= '\0';
+	global->grid->map[++i] = '\0';
 	return (0);
 }
 
 int	parsing(int fd)
 {
 	char		*tmp;
-	int				i;
+	int			i;
 	t_global	*global;
 
 	global = malloc(sizeof(*global));
-	global->grid = malloc(sizeof(t_map)*1);
+	global->grid = malloc(sizeof(t_map) * 1);
 	if (!global || global == NULL)
 		return (0);
-	while(tmp && texture_not_set(global) == 0)
+	while (tmp && texture_not_set(global) == 0)
 	{
 		tmp = get_next_line(fd);
 		if (check_empty_line(tmp) == 0)
@@ -193,11 +194,11 @@ int	parsing(int fd)
 		write (1, "Error\n", 6);
 		return (-1);
 	}
-	while (check_empty_line(tmp)!= 0)
+	while (check_empty_line(tmp) != 0)
 	{
 		tmp = get_next_line(fd);
 	}
-	while (tmp && check_empty_line(tmp)== 0)
+	while (tmp && check_empty_line(tmp) == 0)
 	{
 		fill_map(global, tmp);
 		tmp = get_next_line(fd);
@@ -213,25 +214,19 @@ int	parsing(int fd)
 	printf("ceiling G == %i", global->ceiling.G);
 	printf("ceiling B == %i\n", global->ceiling.B);
 	i = 0;
-	while(global->grid->map[i])
+	while (global->grid->map[i])
 	{
 		printf("global->grid->map[%i] = %s\n", i, global->grid->map[i]);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
-int main()
+int	main(void)
 {
-	int fd;
+	int	fd;
 
 	fd = open("map_test.cub", O_RDONLY);
 	parsing(fd);
-	return(0);
+	return (0);
 }
-
-
-// a faire :
-// reste a checker maintenant si le path est le bon.
-// checker si les couleurs sont les bonnes, mettre message d'erreur si c'est pas bon. 
-// GROS PB si je met pas es bon args.
