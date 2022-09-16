@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 17:04:11 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:37:36 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
 
 // Parsing
-t_bool	valid_map(t_map map);
+t_bool	valid_map(t_env map);
 t_bool	valid_color(t_color color);
 t_bool	valid_texture(char *text_path);
 
