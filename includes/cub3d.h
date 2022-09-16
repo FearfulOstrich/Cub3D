@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 11:22:14 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 13:03:41 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ON_KEYDOWN		2
 # define ON_MOUSEDOWN	4
 # define ON_DESTROY		17
+# define PI	3,14159265358
 
 typedef struct s_vector
 {

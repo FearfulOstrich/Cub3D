@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 17:06:09 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:08:24 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,24 @@ int	key_hook(int key, t_global *global)
 {
 	if (key == 65307)
 		((t_xvar *)(global->mlx))->end_loop = 1;
+	if (key == 119)
+		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+	if (key == 115)
+		global->myself->pos = v_add(global->myself->pos, v_scale(global->myself->dir, -1));
+	if (key == 97)
+	{
+		global->myself->dir = v_rotate(global->myself->dir, -90);
+		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+	}
+	if (key == 100)
+	{
+		global->myself->dir = v_rotate(global->myself->dir, 90);
+		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+	}
+	if (key == 65363)
+		global->myself->dir = v_rotate(global->myself->dir,  1); //changer ici la valeur du 1 par je ne sais quoi 
+	if (key == 65361)
+		global->myself->dir = v_rotate(global->myself->dir, 1); //changer ici la valeur du 1 par je ne sais quoi.
 	else
 		printf("%d\n", key);
 	return (0);
