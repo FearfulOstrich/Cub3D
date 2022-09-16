@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/15 18:17:26 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:39:04 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,7 @@ int	set_color(char *str, t_global *global, char c)
 	while(tmp[i])
 		i++;
 	if (i != 3)
-	{
-		printf("Erreur couleuuuuur");
 		return(-1);
-	}
 	if (c == 'F' && !global->floor.R)
 	{
 		global->floor.R = ft_atoi(tmp[0]);
@@ -135,10 +132,9 @@ char **dup_doublechartab(char **tab)
 	while(tab[i])
 	{
 		tmp[i] = ft_strdup(tab[i]);
-		printf("tmp[i] == %s\n", tmp[i]);
 		i++;
 	}
-	tab[i] = '\0';
+	tmp[i] = '\0';
 	ft_free_tab(tab);
 	return (tmp);
 }
@@ -153,7 +149,6 @@ int	fill_map(t_global *global, char *str)
 	{
 		global->map = (char **)malloc(sizeof(char *)*1);
 		global->map[0] = ft_strdup(str);
-		printf("lol global->map[%i] %s", i,  global->map[i]);
 		return (0);
 	}
 	tmp = dup_doublechartab(global->map);
@@ -166,7 +161,6 @@ int	fill_map(t_global *global, char *str)
 	while (tmp[i])
 	{
 		global->map[i] = ft_strdup(tmp[i]);
-	printf("global->map[%i] %s", i,  global->map[i]);
 		i++;
 	}
 	global->map[i] = ft_strdup(str);
@@ -177,6 +171,7 @@ int	fill_map(t_global *global, char *str)
 int	parsing(int fd)
 {
 	char		*tmp;
+	int				i;
 	t_global	*global;
 
 	//rajouter si le nombre d'arguments n'est ps le bn ca tej si c'est pas un .cub ca tej !
@@ -207,10 +202,7 @@ int	parsing(int fd)
 	}
 	while (tmp && check_empty_line(tmp)== 0)
 	{
-		// printf("tmp == %s\n", tmp);
 		fill_map(global, tmp);
-		// if (!global->grid->map)
-		// 	return(-1);
 		tmp = get_next_line(fd);
 	}
 	printf("global->NO = %s\n", global->NO);
@@ -223,6 +215,12 @@ int	parsing(int fd)
 	printf("ceiling R == %i", global->ceiling.R);
 	printf("ceiling G == %i", global->ceiling.G);
 	printf("ceiling B == %i\n", global->ceiling.B);
+	i = 0;
+	while(global->map[i])
+	{
+		printf("global->map[%i] = %s\n", i, global->map[i]);
+		i++;
+	}
 	return(0);
 }
 
