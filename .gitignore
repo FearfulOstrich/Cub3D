@@ -1,5 +1,6 @@
 obj/
 images/
 *.o
+*.a
 a.out
 cub3D

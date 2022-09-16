@@ -40,19 +40,18 @@ SRC_DIR		=	src/
 
 SRC_MAIN	=	main_mlx.c
 
-SRC_PARSING	=	valid_color.c valid_map.c valid_texture.c
-
 SRC_RC		=	find_wall.c init_ray.c
+
+SRC_PARSING	=	valid_color.c valid_map.c valid_texture.c
 
 SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c
 
 SRC_UTILS	=	vector.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
-				$(addprefix $(SRC_DIR)/parsing, $(SRC_PARSING))\
-				# $(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
-				# $(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
-				# $(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
+				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
+				$(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
+				$(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
 
 #------------------------------------#
 #               OBJECTS              #
