@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 15:08:24 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/16 16:31:15 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,28 @@
 
 int	key_hook(int key, t_global *global)
 {
+	// global = malloc(sizeof(t_global) * 1);
+	// global->myself = malloc(sizeof(t_character)*1);
+	// global->myself->pos.x = 1;
+	// global->myself->pos.y = 2;
+	// global->myself->dir.x = 2;
+	// global->myself->dir.y = 2;
 	if (key == 65307)
 		((t_xvar *)(global->mlx))->end_loop = 1;
 	if (key == 119)
+	{	
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);}
 	if (key == 115)
+	{	
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);
 		global->myself->pos = v_add(global->myself->pos, v_scale(global->myself->dir, -1));
+		printf("global->myself->pos.x == %f", global->myself->pos.x);
+		printf("global->myself->pos.y == %f", global->myself->pos.y);}
 	if (key == 97)
 	{
 		global->myself->dir = v_rotate(global->myself->dir, -90);
