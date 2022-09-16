@@ -42,6 +42,8 @@ SRC_MAIN	=	main_mlx.c
 
 SRC_RC		=	find_wall.c init_ray.c
 
+SRC_PARSING	=	valid_color.c valid_map.c valid_texture.c
+
 SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c
 
 SRC_UTILS	=	vector.c

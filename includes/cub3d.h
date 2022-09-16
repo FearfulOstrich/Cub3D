@@ -18,6 +18,7 @@
 # include "mlx_int.h"
 # include "libft.h"
 # include "math.h"
+#include "libft.h"
 
 # define WIN_H		576
 # define WIN_W		1024
@@ -36,10 +37,18 @@ typedef struct s_vector
 
 typedef struct s_color
 {
-	unsigned char	R;
-	unsigned char	G;
-	unsigned char	B;
+	int	R;
+	int	G;
+	int	B;
 }	t_color;
+
+typedef struct s_texture
+{
+	char	*path;
+	int		width;
+	int		height;
+	t_img	*img;
+}	t_texture;
 
 typedef struct s_env
 {
@@ -103,5 +112,10 @@ t_vector	v_create(float x, float y);
 float		v_norm(t_vector v);
 t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
+
+// Parsing
+t_bool	valid_map(t_map map);
+t_bool	valid_color(t_color color);
+t_bool	valid_texture(char *text_path);
 
 #endif
