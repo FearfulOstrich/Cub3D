@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:04:25 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/15 14:29:26 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/16 10:28:23 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_bool	valid_neighbors(char **grid, int y, int x)
 	return (1);
 }
 
-t_bool	valid_tile(t_map map, int y, int x)
+t_bool	valid_tile(t_env map, int y, int x)
 {
 	if (map.grid[y][x] != '1')
 	{
@@ -65,7 +65,7 @@ t_bool	valid_tile(t_map map, int y, int x)
 	return (1);
 }
 
-t_bool	valid_map(t_map map)
+t_bool	valid_map(t_env map)
 {
 	unsigned int	i;
 	unsigned int	j;
