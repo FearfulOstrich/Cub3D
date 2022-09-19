@@ -27,7 +27,7 @@ static int	check_empty_line(char *str)
 			flag++;
 		i++;
 	}
-	if (flag == i -1)
+	if (flag == i - 1)
 		return (1);
 	return (0);
 }
