@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 10:42:54 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/19 11:05:40 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include "math.h"
 #include "libft.h"
 
+// boolean constants
+# define TRUE	1
+# define FALSE	0
+// Image dimensions constants
 # define WIN_H		576
 # define WIN_W		1024
 # define UNIT_SIZE	64
@@ -37,24 +41,31 @@ typedef struct s_vector
 
 typedef struct s_color
 {
-	int	R;
-	int	G;
-	int	B;
+	int		R;
+	int		G;
+	int		B;
+	t_bool	set;
 }	t_color;
 
-typedef char*	t_texture;
-// typedef struct s_texture
-// {
-// 	char	*path;
-// 	int		width;
-// 	int		height;
-// 	t_img	*img;
-// }	t_texture;
+// typedef char*	t_texture;
+typedef struct s_texture
+{
+	char	*path;
+	int		width;
+	int		height;
+	t_img	*img;
+}	t_texture;
 
 typedef struct s_env
 {
 	unsigned int	height;
 	char			**map;
+	t_texture		NO;
+	t_texture		SO;
+	t_texture		WE;
+	t_texture		EA;
+	t_color			floor;
+	t_color			ceiling;
 }	t_env;
 
 typedef struct s_character
@@ -67,14 +78,8 @@ typedef struct s_character
 
 typedef struct s_global
 {
-	t_map		*grid;
-	t_color		floor;
-	t_color		ceiling;
-	t_texture	NO;
-	t_texture	SO;
-	t_texture	WE;
-	t_texture	EA;
-	// t_env		env;
+	// t_map		*grid;
+	t_env		env;
 	t_character	*myself;
 	void		*mlx;
 	void		*win;
