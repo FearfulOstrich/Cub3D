@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:04:25 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 14:24:21 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 15:44:54 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,8 @@ t_bool	valid_map(t_env env)
 	i = -1;
 	j = -1;
 	while (++i < env.height)
-	{
 		while (++j < ft_strlen(env.map[i]))
-		{
 			if ((env.map[i][j] != ' ') && valid_tile(env, i, j) == FALSE)
 				return (FALSE);
-		}
-	}
 	return (TRUE);
 }
