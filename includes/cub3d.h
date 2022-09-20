@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 17:08:15 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:30:12 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "mlx_int.h"
 # include "libft.h"
 # include "math.h"
-#include "libft.h"
+# include "libft.h"
 
 // boolean constants
 # define TRUE	1
@@ -94,6 +94,8 @@ typedef struct s_RC
 	t_vector	dx;
 	t_vector	dy0;
 	t_vector	dy;
+	int			s;
+	t_edge		wall;
 }	t_RC;
 
 typedef struct s_edge
