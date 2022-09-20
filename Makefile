@@ -38,17 +38,19 @@ LIBMLXINC_FLAG	=	-I $(LIBMLX_DIR)
 
 SRC_DIR		=	src/
 
-SRC_MAIN	=	main_mlx.c
+SRC_MAIN	=	main.c
 
 SRC_RC		=	find_wall.c init_ray.c
 
-SRC_PARSING	=	valid_color.c valid_map.c valid_texture.c parsing.c
+SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
+				errors.c valid_color.c valid_map.c valid_texture.c
 
-SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c
+SRC_MONITO	=	init_mlx.c monitor.c hooks.c
 
-SRC_UTILS	=	vector.c
+SRC_UTILS	=	vector.c show_env.c clean_global.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
+				$(addprefix $(SRC_DIR)parsing/, $(SRC_PARSING))\
 				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
 				$(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
 				$(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
@@ -82,7 +84,7 @@ LNK_FLAG	=	-lXext -lX11 -lm
 
 all: $(LIBFT_A) $(LIBMLX_A) $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 		$(CC) $(CFLAG) $(OBJ) -o $(NAME) $(LIB_ARCHIVE) $(LNK_FLAG)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)

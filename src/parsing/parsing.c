@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:59:58 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/16 15:28:52 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/20 11:35:45 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_empty_line(char *str)
 			flag++;
 		i++;
 	}
-	if (flag == i -1)
+	if (flag == i - 1)
 		return (1);
 	return (0);
 }
