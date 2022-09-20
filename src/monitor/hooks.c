@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 16:40:31 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:06:58 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,35 @@ int	key_hook(int key, t_global *global)
 		((t_xvar *)(global->mlx))->end_loop = 1;
 	if (key == 119)
 	{	
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
 		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);}
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);}
 	if (key == 115)
 	{	
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
 		global->myself->pos = v_add(global->myself->pos, v_scale(global->myself->dir, -1));
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);}
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);}
 	if (key == 97)
 	{
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
-		global->myself->dir = v_rotate(global->myself->dir, -90);
-		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
-			printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		global->myself->pos = v_add(v_rotate(global->myself->dir, -90), global->myself->pos);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);
 	}
 	if (key == 100)
 	{
-		printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
-		global->myself->dir = v_rotate(global->myself->dir, 90);
-		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
-				printf("global->myself->pos.x == %f", global->myself->pos.x);
-		printf("global->myself->pos.y == %f", global->myself->pos.y);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		printf("movement direction x == %f\n", v_rotate(global->myself->dir, 90).x);
+		printf("movement direction y == %f\n", v_rotate(global->myself->dir, 90).y);
+		global->myself->pos = v_add(v_rotate(global->myself->dir, 90), global->myself->pos);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);
 	}
 	if (key == 65363)
 		global->myself->dir = v_rotate(global->myself->dir,  1); //changer ici la valeur du 1 par je ne sais quoi 

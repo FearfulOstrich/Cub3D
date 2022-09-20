@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:44:03 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 14:52:17 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:19:50 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_vector	v_rotate(t_vector v, int angle)
 	t_vector	res;
 	float		rad_angle;
 
-	rad_angle = (float)angle * 2.0 * PI / 360.0;
+	rad_angle = PI * angle * 2.0 / 360.0;
 	res.x = v.x * cos(rad_angle) + v.y * (-sin(rad_angle));
 	res.y = v.x * sin(rad_angle) + v.y * cos(rad_angle);
 	return (res);

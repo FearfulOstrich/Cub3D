@@ -44,9 +44,9 @@ SRC_RC		=	find_wall.c init_ray.c
 
 SRC_PARSING	=	valid_color.c valid_map.c valid_texture.c
 
-SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c
+SRC_MONITO	=	init_mlx.c del_mlx.c monitor.c hooks.c mini_map.c draw_background.c
 
-SRC_UTILS	=	vector.c
+SRC_UTILS	=	vector.c draw.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
 				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\

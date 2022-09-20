@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/16 13:03:41 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:46:12 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@
 # define ON_KEYDOWN		2
 # define ON_MOUSEDOWN	4
 # define ON_DESTROY		17
-# define PI	3,14159265358
+# define PI	3.14159265358
 
 typedef struct s_vector
 {
 	float	x;
 	float	y;
 }	t_vector;
+
+typedef struct s_pos
+{
+	unsigned int	x;
+	unsigned int	y;
+}	t_pos;
 
 typedef struct s_color
 {
@@ -97,6 +103,9 @@ typedef struct s_edge
 t_bool  init_global_env(t_global *env);
 void    del_global_env(t_global *env);
 t_bool  monitor(t_global *env);
+void	mini_map(t_global *env);
+void	draw_background(t_global *env);
+
 //// hooks
 int	key_hook(int key, t_global	*global);
 int	mouse_hook(int key, t_global	*global);
@@ -119,4 +128,6 @@ t_bool	valid_map(t_env map);
 t_bool	valid_color(t_color color);
 t_bool	valid_texture(char *text_path);
 
+//utils
+void	pixel_put(t_img *img, int x, int y, int color);
 #endif
