@@ -1,15 +1,15 @@
 
-     NO ./path_to_the_north_texture
+     NO ./textures/aalleon64.xpm
 
-SO ./path_to_the_south_texture
-       WE ./path_to_the_west_texture
-
-
+SO ./textures/jbouyer64.xpm
+       WE ./textures/aalleon64.xpm
 
 
 
 
-   EA ./path_to_the_east_texture
+
+
+   EA ./textures/jbouyer64.xpm
 
 F 220,100,0
 

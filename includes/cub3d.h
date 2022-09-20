@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 12:58:22 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:32:11 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,21 @@ typedef struct s_edge
 }	t_edge;
 
 // Parsing
-t_bool	valid_map(t_env map);
+t_bool	valid_map(t_env env);
 t_bool	valid_color(t_color color);
-t_bool	valid_texture(char *text_path);
+t_bool	valid_texture(t_texture *texture, void *mlx);
 t_bool	set_color(t_color *color);
 t_bool	get_path(char *tmp, char *str, char **dest);
 t_bool	is_line_empty(char *str);
 t_bool	params_all_set(t_env env);
 t_bool	map_error(void);
+t_bool	create_env(int fd, t_env *env);
+t_bool	validate_env(t_env *env, void *mlx);
 t_bool	parse_file(char *fname, t_global *global);
 
 // Window monitoring
-t_bool  init_global_env(t_global *env);
-t_bool  monitor(t_global *env);
+t_bool  init_mlx(t_global *global);
+t_bool  monitor(t_global *global);
 //// hooks
 int	key_hook(int key, t_global	*global);
 int	mouse_hook(int key, t_global	*global);
@@ -125,7 +127,7 @@ int	destroy_hook(t_global *global);
 
 // Raycasting
 t_RC		init_RC_env(t_character me, int s);
-t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env map);
+t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
 
 // Vector utils
 t_vector	v_create(float x, float y);

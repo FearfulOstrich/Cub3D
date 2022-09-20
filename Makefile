@@ -42,7 +42,8 @@ SRC_MAIN	=	main.c
 
 SRC_RC		=	find_wall.c init_ray.c
 
-SRC_PARSING	=	parse_file.c utils.c errors.c#valid_color.c valid_map.c valid_texture.c
+SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
+				errors.c valid_color.c valid_map.c valid_texture.c
 
 SRC_MONITO	=	init_mlx.c monitor.c hooks.c
 
