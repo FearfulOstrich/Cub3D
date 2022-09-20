@@ -6,19 +6,37 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 09:51:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/19 12:19:20 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:57:49 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cub3d.h"
+
+static t_bool	fill_map(t_env *env, char *line)
+{
+	char	**new_grid;
+	int		i;
+
+	i = -1;
+	new_grid = ft_calloc(ft_tab_len(env->map) + 2, sizeof(*new_grid));
+	if (new_grid == NULL)
+		return (FALSE);
+	while (env->map[++i] != NULL)
+		new_grid[i] = env->map[i];
+	new_grid[i] = ft_strtrim(line, "\n");
+	if (new_grid[i] == NULL)
+		return (free(new_grid), FALSE);
+	free(env->map);
+	env->map = new_grid;
+	return (TRUE);
+}
 
 static t_bool	set_params(char *str, t_env *env)
 {
 	char	*tmp;
-	char	*path;
 
-	tmp = ft_strtrim(str, " ");
-	if (tmp == 0)
-		return (FALSE);
-	else if (env->NO.path == NULL && get_path(tmp, "NO", &env->NO.path) == TRUE)
+	tmp = ft_strtrim(str, " \n");
+	if (env->NO.path == NULL && get_path(tmp, "NO", &env->NO.path) == TRUE)
 		return (free(tmp), TRUE);
 	else if (env->SO.path == NULL && get_path(tmp, "SO", &env->SO.path) == TRUE)
 		return (free(tmp), TRUE);
@@ -26,28 +44,45 @@ static t_bool	set_params(char *str, t_env *env)
 		return (free(tmp), TRUE);
 	else if (env->EA.path == NULL && get_path(tmp, "EA", &env->EA.path) == TRUE)
 		return (free(tmp), TRUE);
-	else if (get_path(tmp, "F") != 0)
-		return (set_color(get_path(tmp, "F"), global, 'F'));
-	else if (get_path(tmp, "C") != 0)
-		return (set_color(get_path(tmp, "C"), global, 'C'));
+	else if (env->floor.set == False &&\
+			get_path(tmp, "F", &env->floor.input) == TRUE)
+		return (free(tmp), set_color(&env->floor));
+	else if (env->ceiling.set == False &&\
+			get_path(tmp, "C", &env->ceiling.input) == TRUE)
+		return (free(tmp), set_color(&env->ceiling));
 	else
-		return (-1);
-	return (0);
+		return (free(tmp), FALSE);
+}
+
+static char	*free_GNL(int fd, char *line)
+{
+	free(line);
+	return (get_next_line(fd));
 }
 
 static t_bool	create_env(int fd, t_env *env)
 {
 	char	*line;
 
-	line = "";
+	line = get_next_line(fd);
 	while (line && params_all_set(*env) == FALSE)
 	{
-		line = get_next_line(fd);
 		if (is_line_empty(line) == FALSE)
-			if (set_params(line, env) != 0)
-				return (-1, ft_putstr_fd("Error params\n", 1));
-		free(line);
+			if (set_params(line, env) == FALSE)
+				return (free(line), map_error());
+		line = free_GNL(fd, line);
 	}
+	while (line && is_line_empty(line) == TRUE)
+		line = free_GNL(fd, line);
+	while (line && is_line_empty(line) == FALSE)
+	{
+		if (fill_map(env, line) == FALSE)
+			return (free(line), map_error());
+		line = free_GNL(fd, line);
+	}
+	if (line != NULL)
+		return (free(line), TRUE);
+	return (TRUE);
 }
 
 t_bool	parse_file(char *fname, t_global *global)
@@ -57,5 +92,5 @@ t_bool	parse_file(char *fname, t_global *global)
 	fd = open(fname, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	return (create_env(fd, &global->env);
+	return (create_env(fd, &global->env));
 }

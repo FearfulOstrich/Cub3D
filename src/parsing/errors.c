@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_mlx.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 16:51:04 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 16:54:18 by aalleon          ###   ########.fr       */
+/*   Created: 2022/09/20 12:56:56 by aalleon           #+#    #+#             */
+/*   Updated: 2022/09/20 12:58:25 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    del_global_env(t_global *env)
+t_bool	map_error(void)
 {
-	if (env->img != NULL)
-		mlx_destroy_image(env->mlx, env->img);
-	if (env->win != NULL)
-		mlx_destroy_window(env->mlx, env->win);
-	if (env->mlx != NULL)
-	{
-		mlx_destroy_display(env->mlx);
-		free(env->mlx);
-	}
-	return ;
+	ft_putstr_fd("ERROR\nWRONG MAP FORMAT\n", 1);
+	return (FALSE);
 }

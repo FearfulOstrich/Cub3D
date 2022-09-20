@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 17:06:09 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 12:39:44 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ Scroll down -> 5
 
 int	destroy_hook(t_global *global)
 {
-	del_global_env(global);
+	(void)global;
+	printf("TODO: Destroy hook.\n");
+	// del_global_env(global);
 	return (0);
 }
