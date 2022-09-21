@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 13:29:12 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 13:36:15 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int	destroy_hook(t_global *global);
 // Raycasting
 t_RC		init_RC_env(t_character me, int s);
 t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
+float		compute_distance(t_RC tools_RC, t_vector dir)
 void		draw_column(t_RC tools_RC, t_global *global);
 t_bool		draw_walls(t_global *global);
 
