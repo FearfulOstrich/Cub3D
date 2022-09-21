@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:44:03 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 16:19:50 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:24:15 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_vector	v_scale(t_vector v, float alpha)
 	return (res);
 }
 
-// // angle in degrees
+// angle in degrees
 t_vector	v_rotate(t_vector v, int angle)
 {
 	t_vector	res;

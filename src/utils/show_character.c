@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*   show_character.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 14:42:42 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:19:19 by jbouyer          ###   ########.fr       */
+/*   Created: 2022/09/21 16:30:43 by aalleon           #+#    #+#             */
+/*   Updated: 2022/09/21 16:51:54 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_walls(t_global *global)
+void	show_character(t_character myself)
 {
-	int			s;
-	t_RC		tools_RC;
-
-	s = -1;
-	while (++s < WIN_W)
-	{
-		tools_RC = init_RC_env(global->myself, s);
-		tools_RC.wall = find_wall(global->myself.pos, tools_RC, global->env);
-		draw_column(tools_RC, global);
-	}
+	printf("Hello !\n");
+	printf("I'm positionned in (%f, %f)\n", myself.pos.x, myself.pos.y);
+	printf("And i'm looking toward (%f, %f)\n", myself.dir.x, myself.dir.y);
 	return ;
 }

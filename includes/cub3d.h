@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:09:29 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:18:07 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_character
 typedef struct s_global
 {
 	t_env		env;
-	t_character	*myself;
+	t_character	myself;
 	void		*mlx;
 	void		*win;
 	t_img		*img;
@@ -171,9 +171,11 @@ float		v_norm(t_vector v);
 t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
 t_vector	v_rotate(t_vector v, int angle);
+float		v_dot_product(t_vector u, t_vector v);
 
 //Debug utils
 void	show_env(t_env env);
+void	show_character(t_character myself);
 
 // Draw utils
 void	pixel_put(t_img *img, int x, int y, int color);

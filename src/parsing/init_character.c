@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:20:41 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 15:48:53 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:23:24 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_bool	init_character(t_global *global)
 	t_character	myself;
 
 	if (init_vectors(&myself, global->env) == FALSE)
-		return (FALSE);
+		return (map_error());
 	myself.plane = v_rotate(myself.dir, 90);
 	myself.FOV_ratio = FOV_RATIO;
 	global->myself = myself;
