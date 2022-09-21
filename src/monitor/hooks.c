@@ -6,13 +6,13 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 16:06:58 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:55:33 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_hook(int key, t_global *global)
+int	key_hook_press(int key, t_global *global)
 {
 	// global = malloc(sizeof(t_global) * 1);
 	// global->myself = malloc(sizeof(t_character)*1);
@@ -60,9 +60,37 @@ int	key_hook(int key, t_global *global)
 		global->myself->dir = v_rotate(global->myself->dir, 1); //changer ici la valeur du 1 par je ne sais quoi.
 	// else
 	printf("%d\n", key);
+	if (key == 119)
+		global->character.w_press = TRUE;
+	if (key == 115)
+		global->character.s_press = TRUE;
+	if (key == 97)
+		global->character.a_press = TRUE;
+	if (key == 100)
+		global->character.d_press = TRUE;
+	if (key == 65363)
+		global->character.right_press = TRUE;
+	if (key == 65361)
+		global->character.left_press = TRUE;
 	return (0);
 }
 
+int	key_hook_release(int key, t_global *global)
+{
+	if (key == 119)
+		global->character.w_press = FALSE;
+	if (key == 115)
+		global->character.s_press = FALSE;
+	if (key == 97)
+		global->character.a_press = FALSE;
+	if (key == 100)
+		global->character.d_press = FALSE;
+	if (key == 65363)
+		global->character.right_press = FALSE;
+	if (key == 65361)
+		global->character.left_press = FALSE;
+	return (0);
+}
 /* Key codes
 W -> 119
 A -> 97
@@ -89,6 +117,8 @@ Scroll down -> 5
 
 int	destroy_hook(t_global *global)
 {
-	del_global_env(global);
+	(void)global;
+	printf("TODO: Destroy hook.\n");
+	// del_global_env(global);
 	return (0);
 }

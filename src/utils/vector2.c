@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_mlx.c                                          :+:      :+:    :+:   */
+/*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 16:51:04 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 16:54:18 by aalleon          ###   ########.fr       */
+/*   Created: 2022/09/21 09:20:26 by antoine           #+#    #+#             */
+/*   Updated: 2022/09/21 09:24:25 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    del_global_env(t_global *env)
+
+
+float	v_dot_product(t_vector u, t_vector v)
 {
-	if (env->img != NULL)
-		mlx_destroy_image(env->mlx, env->img);
-	if (env->win != NULL)
-		mlx_destroy_window(env->mlx, env->win);
-	if (env->mlx != NULL)
-	{
-		mlx_destroy_display(env->mlx);
-		free(env->mlx);
-	}
-	return ;
+	return (((u.x * v.x) + (u.y * v.y)) / (v_norm(u) * v_norm(v)));
 }

@@ -6,20 +6,29 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 12:02:01 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:56:44 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_bool  monitor(t_global *env)
+void	render_next_frame()
 {
-	mlx_hook(env->win, ON_KEYDOWN, 1L << 0, key_hook, env);
-	mlx_hook(env->win, ON_MOUSEDOWN, 1L << 2, mouse_hook, env);
-	mlx_hook(env->win, ON_DESTROY, 0L, destroy_hook, env);
-	// mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	// draw_background(env);
-	mini_map(env);
-	mlx_loop(env);
-	return (1);
+	update_pos();
+	update_dir();
+	draw_background();
+	draw_walls();
+	// minimap();
+}
+
+t_bool  monitor(t_global *global)
+{
+	mlx_hook(global->win, ON_KEYPRESS, 1L << 0, key_hook_press, global);
+	mlx_hook(global->win, ON_KEYRELEASE, 1L << 1, key_hook_release, global);
+	// mlx_hook(global->win, ON_MOUSEDOWN, 1L << 2, mouse_hook, global);
+	mlx_hook(global->win, ON_DESTROY, 0L, destroy_hook, global);
+	mlx_put_image_to_window(global->mlx, global->win, global->img, 0, 0);
+	mlx_loop_hook(global->mlx, render_next_frame, global);
+	mlx_loop(global->mlx);
+	return (TRUE);
 }

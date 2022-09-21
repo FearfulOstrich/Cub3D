@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:01:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 16:52:58 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:24:03 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ t_RC	init_RC_env(t_character me, int s)
 	printf("To first constant Y: (%f, %f).\n", env.dy0.x, env.dy0.y);
 	env.dy = get_dY(env.ray);
 	printf("To next Y: (%f, %f).\n", env.dy.x, env.dy.y);
-
+	env.s = s;
 	return (env);
 }

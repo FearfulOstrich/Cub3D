@@ -6,31 +6,33 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:21:45 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/14 15:46:52 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 14:00:36 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_edge	init_edge(t_RC tools_RC)
+void	update_edge(t_edge *edge, t_RC tools_RC)
 {
-	t_edge	edge;
+	t_vector	next_x;
+	t_vector	next_y;
 
-	edge.c_x = 0;
-	edge.c_y = 0;
-	if (v_norm(tools_RC.dx0) > v_norm(tools_RC.dy0))
+	next_x = v_add(tools_RC.dx0, v_scale(tools_RC.dx, edge->c_x));
+	next_y = v_add(tools_RC.dy0, v_scale(tools_RC.dy, edge->c_y));
+	// If next edge is still y constant (+dy)
+	if (v_norm(next_x) > v_norm(next_y))
 	{
-		edge.v_edge = tools_RC.dy0;
-		edge.c_y++;
-		edge.horizontal = 1;
+		edge->v_edge = next_y;
+		edge->horizontal = TRUE;
+		edge->c_y++;
 	}
 	else
 	{
-		edge.v_edge = tools_RC.dx0;
-		edge.c_x++;
-		edge.horizontal = 0;
+		edge->v_edge = next_x;
+		edge->horizontal = FALSE;
+		edge->c_x++;
 	}
-	return (edge);
+	return ;
 }
 
 t_bool	is_wall(t_vector pos, t_edge edge, t_env env)
@@ -57,34 +59,32 @@ t_bool	is_wall(t_vector pos, t_edge edge, t_env env)
 	printf("checking map idx: (%d, %d)\n", ix_y, ix_x);
 	printf("horizontal slice of map at ix %d: %s\n", ix_y, env.map[ix_y]);
 	if (env.map[ix_y][ix_x] == '1')
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 
-void	update_edge(t_edge *edge, t_RC tools_RC)
+t_edge	init_edge(t_RC tools_RC)
 {
-	t_vector	next_x;
-	t_vector	next_y;
+	t_edge	edge;
 
-	next_x = v_add(tools_RC.dx0, v_scale(tools_RC.dx, edge->c_x));
-	next_y = v_add(tools_RC.dy0, v_scale(tools_RC.dy, edge->c_y));
-	// If next edge is still y constant (+dy)
-	if (v_norm(next_x) > v_norm(next_y))
+	edge.c_x = 0;
+	edge.c_y = 0;
+	if (v_norm(tools_RC.dx0) > v_norm(tools_RC.dy0))
 	{
-		edge->v_edge = next_y;
-		edge->horizontal = 1;
-		edge->c_y++;
+		edge.v_edge = tools_RC.dy0;
+		edge.c_y++;
+		edge.horizontal = TRUE;
 	}
 	else
 	{
-		edge->v_edge = next_x;
-		edge->horizontal = 0;
-		edge->c_x++;
+		edge.v_edge = tools_RC.dx0;
+		edge.c_x++;
+		edge.horizontal = FALSE;
 	}
-	return ;
+	return (edge);
 }
 
-t_edge	find_wall(t_vector pos, t_RC tools_RC, t_env map)
+t_edge	find_wall(t_vector pos, t_RC tools_RC, t_env env)
 {
 	t_edge			edge;
 
@@ -95,7 +95,7 @@ t_edge	find_wall(t_vector pos, t_RC tools_RC, t_env map)
 		printf("\tv_edge = ( dx0 + %u * dx; dy0 + %u * dy)", edge.c_x, edge.c_y);
 		printf(" = ( %f, %f )\n", edge.v_edge.x, edge.v_edge.y);
 		fflush(stdout);
-		if (is_wall(pos, edge, map))
+		if (is_wall(pos, edge, env))
 			return (edge);
 		update_edge(&edge, tools_RC);
 	}
