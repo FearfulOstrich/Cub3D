@@ -45,7 +45,7 @@ SRC_RC		=	find_wall.c init_ray.c
 SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
 				errors.c valid_color.c valid_map.c valid_texture.c
 
-SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c
+SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c movement.c
 
 SRC_UTILS	=	vector.c show_env.c clean_global.c draw.c
 
