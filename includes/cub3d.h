@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 13:36:15 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 14:29:28 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define FOV_RATIO	0.66
 # define HEIGHT_MOD	1
 // Hook constants
-# define ON_KEYDOWN		2
+# define ON_KEYPRESS	2
+# define ON_KEYRELEASE	3
 # define ON_MOUSEDOWN	4
 # define ON_DESTROY		17
 
@@ -85,6 +86,12 @@ typedef struct s_character
 	t_vector	dir;
 	t_vector	plane;
 	float		FOV_ratio;
+	t_bool		w_press;
+	t_bool		a_press;
+	t_bool		s_press;
+	t_bool		d_press;
+	t_bool		right_press;
+	t_bool		left_press;
 }	t_character;
 
 typedef struct s_global
