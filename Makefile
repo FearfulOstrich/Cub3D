@@ -40,14 +40,17 @@ SRC_DIR		=	src/
 
 SRC_MAIN	=	main.c
 
-SRC_RC		=	find_wall.c init_ray.c
+SRC_RC		=	find_wall.c init_ray.c compute_distance.c draw_walls.c\
+				draw_column.c
 
 SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
-				errors.c valid_color.c valid_map.c valid_texture.c
+				errors.c valid_color.c valid_map.c valid_texture.c\
+				init_character.c
 
 SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c movement.c
 
-SRC_UTILS	=	vector.c show_env.c clean_global.c draw.c
+SRC_UTILS	=	vector.c show_env.c clean_global.c draw.c show_character.c\
+				vector2.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
 				$(addprefix $(SRC_DIR)parsing/, $(SRC_PARSING))\
