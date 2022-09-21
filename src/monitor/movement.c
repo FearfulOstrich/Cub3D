@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:32:02 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/21 17:24:02 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:43:46 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	update_dir(t_global *global)
 	if (global->myself.right_press == TRUE)
 		global->myself.dir = v_rotate(global->myself.dir,  ROT_SPEED);
 	if (global->myself.left_press == TRUE)
-		global->myself.dir = v_rotate(global->myself.dir, ROT_SPEED);
+		global->myself.dir = v_rotate(global->myself.dir, -ROT_SPEED);
 }

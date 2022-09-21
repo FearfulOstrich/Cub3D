@@ -1,24 +1,24 @@
 
-     NO ./textures/aalleon64.xpm
+     NO ./textures/aalleon256.xpm
 
-SO ./textures/jbouyer64.xpm
-       WE ./textures/aalleon64.xpm
-
-
+SO ./textures/jbouyer256.xpm
+       WE ./textures/aalleon256.xpm
 
 
 
 
-   EA ./textures/jbouyer64.xpm
 
-F 220,100,0
 
-C 100,30,0
+   EA ./textures/jbouyer256.xpm
+
+F 255,255,0
+
+C 255,0,255
 
 111111111
 100000001
-10010E001
-100100001
+10000E001
+100000001
 100000001
 111111111
 
