@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:02:06 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:20:56 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ t_bool	map_error(void);
 t_bool	create_env(int fd, t_env *env);
 t_bool	validate_env(t_env *env, void *mlx);
 t_bool	parse_file(char *fname, t_global *global);
+t_bool	init_character(t_global *global);
 
 // Window monitoring
 void	mini_map(t_global *env);
