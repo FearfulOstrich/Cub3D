@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:01:22 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:13:24 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # define ON_MOUSEDOWN	4
 # define ON_DESTROY		17
 # define PI	3.14159265358
+//movement constants
+# define ROT_SPEED 1;
+# define TRANS_SPEED 0.2;
 
 typedef struct s_pos
 {
@@ -155,6 +158,10 @@ t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
 float		compute_distance(t_RC tools_RC, t_vector dir);
 void		draw_column(t_RC tools_RC, t_global *global);
 void		draw_walls(t_global *global);
+
+//Movements
+void		update_pos(t_global *global);
+void	update_dir(t_global *global);
 
 // Vector utils
 t_vector	v_create(float x, float y);
