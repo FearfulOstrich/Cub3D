@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_mlx.c                                         :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 16:46:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 16:21:33 by jbouyer          ###   ########.fr       */
+/*   Created: 2022/09/20 16:31:41 by jbouyer           #+#    #+#             */
+/*   Updated: 2022/09/20 17:34:21 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main()
+	void	pixel_put(t_img *img, int x, int y, int color)
 {
-	t_global	global_env;
+	char	*dst;
 
-	init_global_env(&global_env);
-	global_env.myself = malloc(sizeof(t_character)*1);
-	global_env.myself->pos.x = 1;
-	global_env.myself->pos.y = 1;
-	global_env.myself->dir.x = 1;
-	global_env.myself->dir.y = 0;
-	monitor(&global_env);
-	return (0);
+	dst = img->data + (y * img->size_line + x * (img->bpp) / 8);
+	*(unsigned int*)dst = color;
 }
