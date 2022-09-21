@@ -6,13 +6,13 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:42 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 13:14:20 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 13:29:27 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_walls(t_global	*global)
+void	draw_walls(t_global *global)
 {
 	int			s;
 	t_RC		tools_RC;

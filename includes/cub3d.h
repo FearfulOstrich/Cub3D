@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 13:14:06 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 13:29:12 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ t_bool	validate_env(t_env *env, void *mlx);
 t_bool	parse_file(char *fname, t_global *global);
 
 // Window monitoring
-t_bool  init_mlx(t_global *global);
-t_bool  monitor(t_global *global);
+t_bool	init_mlx(t_global *global);
+t_bool	monitor(t_global *global);
 //// hooks
 int	key_hook(int key, t_global	*global);
 int	mouse_hook(int key, t_global	*global);
@@ -142,7 +142,7 @@ int	destroy_hook(t_global *global);
 t_RC		init_RC_env(t_character me, int s);
 t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
 void		draw_column(t_RC tools_RC, t_global *global);
-t_bool		draw_walls(t_global	*global);
+t_bool		draw_walls(t_global *global);
 
 // Vector utils
 t_vector	v_create(float x, float y);
@@ -152,7 +152,7 @@ t_vector	v_scale(t_vector v, float alpha);
 t_vector	v_rotate(t_vector v, int angle);
 
 //Debug utils
-void	show_env(t_env	env);
+void	show_env(t_env env);
 
 // mem utils
 void    clean_global(t_global *global);
