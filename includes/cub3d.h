@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:20:56 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:01:22 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,19 @@ typedef struct s_character
 typedef struct s_global
 {
 	t_env		env;
-	t_character	*myself;
+	t_character	myself;
 	void		*mlx;
 	void		*win;
 	t_img		*img;
 }	t_global;
+
+typedef struct s_edge
+{
+	t_vector		v_edge;
+	t_bool			horizontal;
+	unsigned int	c_x;
+	unsigned int	c_y;
+}	t_edge;
 
 typedef struct s_RC
 {
@@ -116,14 +124,6 @@ typedef struct s_RC
 	t_edge		wall;
 	int			wall_height;
 }	t_RC;
-
-typedef struct s_edge
-{
-	t_vector		v_edge;
-	t_bool			horizontal;
-	unsigned int	c_x;
-	unsigned int	c_y;
-}	t_edge;
 
 // Parsing
 t_bool	valid_map(t_env env);
@@ -154,7 +154,7 @@ t_RC		init_RC_env(t_character me, int s);
 t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
 float		compute_distance(t_RC tools_RC, t_vector dir);
 void		draw_column(t_RC tools_RC, t_global *global);
-t_bool		draw_walls(t_global *global);
+void		draw_walls(t_global *global);
 
 // Vector utils
 t_vector	v_create(float x, float y);
@@ -162,9 +162,11 @@ float		v_norm(t_vector v);
 t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
 t_vector	v_rotate(t_vector v, int angle);
+float		v_dot_product(t_vector u, t_vector v);
 
 //Debug utils
 void	show_env(t_env env);
+void	show_character(t_character myself);
 
 // Draw utils
 void	pixel_put(t_img *img, int x, int y, int color);

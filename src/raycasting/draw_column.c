@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 14:23:32 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:03:17 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int get_texture_color(t_texture texture, float h_ratio, float w_ratio)
 
 	pix_pos.x = texture.img->width * w_ratio;
 	pix_pos.y = texture.img->height * (0.5 + h_ratio);
-	pix = texture.img.data;
+	pix = texture.img->data;
 	pix += pix_pos.y * texture.img->size_line;
 	pix += pix_pos.x * (texture.img->bpp / 8);
 	return (*(int *)pix);
@@ -52,8 +52,8 @@ static float	get_w_ratio(t_RC tools_RC, t_global *global)
 			return (1.0 - (wall_pos.x - floor(wall_pos.x)));
 	}
 	if (tools_RC.ray.x > 0)
-		return (wall_pos.y - floor(wall_pos).y);
-	return (1 - (wall_pos.y - floor(wall_pos).y));
+		return (wall_pos.y - floor(wall_pos.y));
+	return (1 - (wall_pos.y - floor(wall_pos.y)));
 }
 
 static void	draw_texture_pixel(int h, t_RC tools_RC, t_global *global)
@@ -67,7 +67,7 @@ static void	draw_texture_pixel(int h, t_RC tools_RC, t_global *global)
 	w_ratio = get_w_ratio(tools_RC, global);
 	texture = get_texture(tools_RC, global);
 	pix_color = get_texture_color(texture, h_ratio, w_ratio);
-	put_pixel(global, tools_RC.s, (WIN_H / 2) + h, pix_color);
+	pixel_put(global->img, tools_RC.s, (WIN_H / 2) + h, pix_color);
 }
 
 void	draw_column(t_RC tools_RC, t_global *global)
@@ -75,7 +75,7 @@ void	draw_column(t_RC tools_RC, t_global *global)
 	float	distance;
 	int		i;
 
-	distance = compute_distance(tools_RC, global->myself->dir);
+	distance = compute_distance(tools_RC, global->myself.dir);
 	tools_RC.wall_height = HEIGHT_MOD * WIN_H / distance;
 	i = (-tools_RC.wall_height / 2) - 1;
 	while (++i < tools_RC.wall_height / 2)
