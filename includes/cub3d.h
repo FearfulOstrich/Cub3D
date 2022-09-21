@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 15:56:51 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:02:06 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ typedef struct s_vector
 	float	x;
 	float	y;
 }	t_vector;
-
-typedef struct s_pos
-{
-	unsigned int	x;
-	unsigned int	y;
-}	t_pos;
 
 typedef struct s_color
 {
@@ -148,10 +142,23 @@ t_bool	parse_file(char *fname, t_global *global);
 void	mini_map(t_global *env);
 void	draw_background(t_global *env);
 t_bool	init_mlx(t_global *global);
-t_b=======
-/*   Updated: 2022/09/21 14:29:28 by aalleon          ###   ########.fr       */
->>>>>>> a2907cdad90fcf37a289fd239cee092ccd92fc71
-ector	v_add(t_vector v1, t_vector v2);
+t_bool	monitor(t_global *global);
+//// hooks
+int		key_hook(int key, t_global *global);
+int		mouse_hook(int key, t_global *global);
+int		destroy_hook(t_global *global);
+
+// Raycasting
+t_RC		init_RC_env(t_character me, int s);
+t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
+float		compute_distance(t_RC tools_RC, t_vector dir);
+void		draw_column(t_RC tools_RC, t_global *global);
+t_bool		draw_walls(t_global *global);
+
+// Vector utils
+t_vector	v_create(float x, float y);
+float		v_norm(t_vector v);
+t_vector	v_add(t_vector v1, t_vector v2);
 t_vector	v_scale(t_vector v, float alpha);
 t_vector	v_rotate(t_vector v, int angle);
 
