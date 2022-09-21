@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 15:48:55 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:55:33 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,52 @@
 
 int	key_hook_press(int key, t_global *global)
 {
+	// global = malloc(sizeof(t_global) * 1);
+	// global->myself = malloc(sizeof(t_character)*1);
+	// global->myself->pos.x = 1;
+	// global->myself->pos.y = 2;
+	// global->myself->dir.x = 2;
+	// global->myself->dir.y = 2;
 	if (key == 65307)
 		((t_xvar *)(global->mlx))->end_loop = 1;
+	if (key == 119)
+	{	
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		global->myself->pos = v_add(global->myself->dir, global->myself->pos);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);}
+	if (key == 115)
+	{	
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		global->myself->pos = v_add(global->myself->pos, v_scale(global->myself->dir, -1));
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);}
+	if (key == 97)
+	{
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		global->myself->pos = v_add(v_rotate(global->myself->dir, -90), global->myself->pos);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);
+	}
+	if (key == 100)
+	{
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n", global->myself->pos.y);
+		printf("movement direction x == %f\n", v_rotate(global->myself->dir, 90).x);
+		printf("movement direction y == %f\n", v_rotate(global->myself->dir, 90).y);
+		global->myself->pos = v_add(v_rotate(global->myself->dir, 90), global->myself->pos);
+		printf("global->myself->pos.x == %f\n", global->myself->pos.x);
+		printf("global->myself->pos.y == %f\n\n", global->myself->pos.y);
+	}
+	if (key == 65363)
+		global->myself->dir = v_rotate(global->myself->dir,  1); //changer ici la valeur du 1 par je ne sais quoi 
+	if (key == 65361)
+		global->myself->dir = v_rotate(global->myself->dir, 1); //changer ici la valeur du 1 par je ne sais quoi.
+	// else
+	printf("%d\n", key);
 	if (key == 119)
 		global->character.w_press = TRUE;
 	if (key == 115)
