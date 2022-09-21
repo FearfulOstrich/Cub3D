@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:05:48 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:20:58 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 int	key_hook_press(int key, t_global *global)
 {
 	if (key == 119)
-		global->myself->w_press = TRUE;
+		global->myself.w_press = TRUE;
 	if (key == 115)
-		global->myself->s_press = TRUE;
+		global->myself.s_press = TRUE;
 	if (key == 97)
-		global->myself->a_press = TRUE;
+		global->myself.a_press = TRUE;
 	if (key == 100)
-		global->myself->d_press = TRUE;
+		global->myself.d_press = TRUE;
 	if (key == 65363)
-		global->myself->right_press = TRUE;
+		global->myself.right_press = TRUE;
 	if (key == 65361)
-		global->myself->left_press = TRUE;
+		global->myself.left_press = TRUE;
 	return (0);
 }
 
 int	key_hook_release(int key, t_global *global)
 {
 	if (key == 119)
-		global->myself->w_press = FALSE;
+		global->myself.w_press = FALSE;
 	if (key == 115)
-		global->myself->s_press = FALSE;
+		global->myself.s_press = FALSE;
 	if (key == 97)
-		global->myself->a_press = FALSE;
+		global->myself.a_press = FALSE;
 	if (key == 100)
-		global->myself->d_press = FALSE;
+		global->myself.d_press = FALSE;
 	if (key == 65363)
-		global->myself->right_press = FALSE;
+		global->myself.right_press = FALSE;
 	if (key == 65361)
-		global->myself->left_press = FALSE;
+		global->myself.left_press = FALSE;
 	return (0);
 }
 /* Key codes

@@ -40,12 +40,8 @@ SRC_DIR		=	src/
 
 SRC_MAIN	=	main.c
 
-<<<<<<< HEAD
-SRC_RC		=	find_wall.c init_ray.c draw_walls.c draw_column.c
-=======
 SRC_RC		=	find_wall.c init_ray.c compute_distance.c draw_walls.c\
 				draw_column.c
->>>>>>> 8fc4032fb7231a69246d90a175491f66f6ee1415
 
 SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
 				errors.c valid_color.c valid_map.c valid_texture.c\
