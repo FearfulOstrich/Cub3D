@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
+/*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 17:08:48 by aalleon          ###   ########.fr       */
+/*   Created: 2022/09/13 14:42:42 by aalleon           #+#    #+#             */
+/*   Updated: 2022/09/21 13:29:27 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_bool  monitor(t_global *env)
+void	draw_walls(t_global *global)
 {
-	mlx_hook(env->win, ON_KEYDOWN, 1L << 0, key_hook, env);
-	mlx_hook(env->win, ON_MOUSEDOWN, 1L << 2, mouse_hook, env);
-	mlx_hook(env->win, ON_DESTROY, 0L, destroy_hook, env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	mlx_loop(env->mlx);
-	return (TRUE);
+	int			s;
+	t_RC		tools_RC;
+
+	s = -1;
+	while (++s < WIN_W)
+	{
+		tools_RC = init_RC_env(*(global->myself), s);
+		tools_RC.wall = find_wall(global->myself->pos, tools_RC, global->map);
+		draw_column(tools_RC, global);
+	}
+	return ;
 }
