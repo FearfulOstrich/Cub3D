@@ -6,11 +6,16 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:27:54 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/21 11:58:20 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:24:08 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
+
+static int	color_to_int(t_color color)
+{
+	return (color.R << 16 | color.G << 8 | color.B);
+}
 
 void	draw_background(t_global *env)
 {
