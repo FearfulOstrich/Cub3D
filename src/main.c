@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:38:55 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 14:36:54 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:21:10 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	main(int argc, char *argv[])
 		return (clean_global(&global), 2);
 	if (parse_file(argv[1], &global) == FALSE)
 		return (clean_global(&global), 3);
-	show_env(global.env);
-	/*if (init_character(&global) == 0)
+	// show_env(global.env);
+	if (init_character(&global) == FALSE)
 		return (print("Error.\n"), 4);
 	if (monitor(&global) == 0)
-		return (print("Error.\n"), 5);*/
+		return (print("Error.\n"), 5);
 	clean_global(&global);
 	return (0);
 }
