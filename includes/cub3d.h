@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 17:30:12 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 13:14:06 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,22 @@
 // Image dimensions constants
 # define WIN_H		576
 # define WIN_W		1024
+# define MINIMAP_H	100
+# define MINIMAP_W	150
+// Rendering constants
 # define UNIT_SIZE	64
 # define FOV_RATIO	0.66
+# define HEIGHT_MOD	1
 // Hook constants
 # define ON_KEYDOWN		2
 # define ON_MOUSEDOWN	4
 # define ON_DESTROY		17
+
+typedef struct s_pos
+{
+	unsigned int	x;
+	unsigned int	y;
+}	t_pos;
 
 typedef struct s_vector
 {
@@ -96,6 +106,7 @@ typedef struct s_RC
 	t_vector	dy;
 	int			s;
 	t_edge		wall;
+	int			wall_height;
 }	t_RC;
 
 typedef struct s_edge
@@ -130,6 +141,8 @@ int	destroy_hook(t_global *global);
 // Raycasting
 t_RC		init_RC_env(t_character me, int s);
 t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
+void		draw_column(t_RC tools_RC, t_global *global);
+t_bool		draw_walls(t_global	*global);
 
 // Vector utils
 t_vector	v_create(float x, float y);
