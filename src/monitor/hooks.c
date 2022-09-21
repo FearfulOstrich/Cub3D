@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:20:58 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 19:51:49 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	key_hook_press(int key, t_global *global)
 {
+	if (key == 65307)
+	{
+		((t_xvar *)(global->mlx))->end_loop = 1;
+		return (0);
+	}
 	if (key == 119)
 		global->myself.w_press = TRUE;
 	if (key == 115)

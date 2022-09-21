@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:20:41 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:23:24 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 22:27:26 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ t_bool	init_character(t_global *global)
 		return (map_error());
 	myself.plane = v_rotate(myself.dir, 90);
 	myself.FOV_ratio = FOV_RATIO;
+	myself.w_press = FALSE;
+	myself.a_press = FALSE;
+	myself.s_press = FALSE;
+	myself.d_press = FALSE;
+	myself.right_press = FALSE;
+	myself.left_press = FALSE;
 	global->myself = myself;
 	return (TRUE);
 }

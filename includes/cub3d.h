@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:18:07 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 22:28:16 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@
 # define ON_DESTROY		17
 # define PI	3.14159265358
 //movement constants
-# define ROT_SPEED 1
-# define TRANS_SPEED 0.2
+# define ROT_SPEED		10
+# define TRANS_SPEED	0.2
+# define SAFE_RADIUS	0.1
 
 typedef struct s_pos
 {
