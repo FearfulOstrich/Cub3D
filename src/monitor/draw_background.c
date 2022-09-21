@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:27:54 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/20 17:49:38 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 11:58:20 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	draw_background(t_global *env)
 		i = 0;
 		while (i < img->width)
 		{
-			pixel_put(img, i, j, 0x00FF0000);
+			pixel_put(img, i, j, 0x00FFFFFF);
 			i++;
 		}
 		j++;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, img, 0, 0);
-	mlx_loop(env->mlx);
+	// mlx_loop(env->mlx);
 }
