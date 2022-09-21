@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:51:07 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:09:29 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define ON_DESTROY		17
 # define PI	3.14159265358
 //movement constants
-# define ROT_SPEED 1;
-# define TRANS_SPEED 0.2;
+# define ROT_SPEED 1
+# define TRANS_SPEED 0.2
 
 typedef struct s_pos
 {
@@ -107,6 +107,14 @@ typedef struct s_global
 	t_img		*img;
 }	t_global;
 
+typedef struct s_edge
+{
+	t_vector		v_edge;
+	t_bool			horizontal;
+	unsigned int	c_x;
+	unsigned int	c_y;
+}	t_edge;
+
 typedef struct s_RC
 {
 	float		camX;
@@ -119,14 +127,6 @@ typedef struct s_RC
 	t_edge		wall;
 	int			wall_height;
 }	t_RC;
-
-typedef struct s_edge
-{
-	t_vector		v_edge;
-	t_bool			horizontal;
-	unsigned int	c_x;
-	unsigned int	c_y;
-}	t_edge;
 
 // Parsing
 t_bool	valid_map(t_env env);
@@ -151,13 +151,15 @@ t_bool	monitor(t_global *global);
 int		key_hook(int key, t_global *global);
 int		mouse_hook(int key, t_global *global);
 int		destroy_hook(t_global *global);
+int		key_hook_release(int key, t_global *global);
+int		key_hook_press(int key, t_global *global);
 
 // Raycasting
 t_RC		init_RC_env(t_character me, int s);
 t_edge		find_wall(t_vector pos, t_RC tools_RC, t_env env);
 float		compute_distance(t_RC tools_RC, t_vector dir);
 void		draw_column(t_RC tools_RC, t_global *global);
-t_bool		draw_walls(t_global *global);
+void		draw_walls(t_global *global);
 
 //Movements
 void		update_pos(t_global *global);

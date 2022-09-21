@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:42 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 13:29:27 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:11:53 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_walls(t_global *global)
 	while (++s < WIN_W)
 	{
 		tools_RC = init_RC_env(*(global->myself), s);
-		tools_RC.wall = find_wall(global->myself->pos, tools_RC, global->map);
+		tools_RC.wall = find_wall(global->myself->pos, tools_RC, global->env);
 		draw_column(tools_RC, global);
 	}
 	return ;

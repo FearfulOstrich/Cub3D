@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:38:55 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:21:10 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/21 16:58:59 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	main(int argc, char *argv[])
 		return (clean_global(&global), 3);
 	// show_env(global.env);
 	if (init_character(&global) == FALSE)
-		return (print("Error.\n"), 4);
+		return (printf("Error.\n"), 4);
 	if (monitor(&global) == 0)
-		return (print("Error.\n"), 5);
+		return (printf("Error.\n"), 5);
 	clean_global(&global);
 	return (0);
 }

@@ -6,19 +6,20 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 16:32:23 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:03:16 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	render_next_frame(t_global *global)
+int	render_next_frame(t_global *global)
 {
 	update_pos(global);
 	update_dir(global);
 	draw_background(global);
 	draw_walls(global);
 	// minimap();
+	return (0);
 }
 
 t_bool  monitor(t_global *global)
