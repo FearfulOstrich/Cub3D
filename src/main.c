@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:38:55 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 08:59:36 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:02:19 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static t_bool	init_global(t_global *global)
 	global->env.floor.set = FALSE;
 	global->env.ceiling.input = NULL;
 	global->env.ceiling.set = FALSE;
-	if (init_mlx(global) == FALSE)
+	global->mlx = mlx_init();
+	if (global->mlx == NULL)
 		return (FALSE);
+	global->img = NULL;
+	global->win = NULL;
 	global->counter = 0;
 	return (TRUE);
 }
@@ -48,8 +51,10 @@ int	main(int argc, char *argv[])
 	if (init_character(&global) == FALSE)
 		return (clean_global(&global), 4);
 	show_character(global.myself);
-	if (monitor(&global) == FALSE)
+	if (init_mlx(&global) == FALSE)
 		return (clean_global(&global), 5);
+	if (monitor(&global) == FALSE)
+		return (clean_global(&global), 6);
 	clean_global(&global);
 	return (0);
 }

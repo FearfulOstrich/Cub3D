@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_column.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:28:19 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:24:05 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	draw_column(t_RC tools_RC, t_global *global)
 	int		i;
 
 	distance = compute_distance(tools_RC, global->myself.dir);
-	tools_RC.wall_height = HEIGHT_MOD * WIN_H / distance;
+	tools_RC.wall_height = (WIN_H / distance) *\
+							(FOV_RATIO / global->myself.FOV_ratio);
 	i = (-tools_RC.wall_height / 2) - 1;
 	while (++i < tools_RC.wall_height / 2)
 		draw_texture_pixel(i, tools_RC, global);

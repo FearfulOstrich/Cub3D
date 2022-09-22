@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
 /*   Updated: 2022/09/22 14:55:52 by jbouyer          ###   ########.fr       */
@@ -152,7 +152,7 @@ t_bool	init_mlx(t_global *global);
 t_bool	monitor(t_global *global);
 //// hooks
 int		key_hook(int key, t_global *global);
-int		mouse_hook(int key, t_global *global);
+int		mouse_hook(int key, int x, int y, t_global *global);
 int		destroy_hook(t_global *global);
 int		key_hook_release(int key, t_global *global);
 int		key_hook_press(int key, t_global *global);
