@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:27:54 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 12:08:38 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:34:08 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	color_to_int(t_color color)
 
 void	draw_background(t_global *global)
 {
-	int i;
+	int	i;
 	int	j;
 
 	j = 0;

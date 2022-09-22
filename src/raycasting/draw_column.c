@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_column.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 09:11:27 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:28:19 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int get_texture_color(t_texture texture, float h_ratio, float w_ratio)
+static int	get_texture_color(t_texture texture, float h_ratio, float w_ratio)
 {
 	char	*pix;
 	t_pos	pix_pos;

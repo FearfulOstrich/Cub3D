@@ -6,11 +6,11 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:32:02 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 11:30:04 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:38:28 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 static t_bool	is_wall(t_vector pos, char **map)
 {
@@ -76,11 +76,10 @@ void	update_pos(t_global *global)
 	}
 }
 
-
 void	update_dir(t_global *global)
 {
 	if (global->myself.right_press == TRUE)
-		global->myself.dir = v_rotate(global->myself.dir,  ROT_SPEED);
+		global->myself.dir = v_rotate(global->myself.dir, ROT_SPEED);
 	if (global->myself.left_press == TRUE)
 		global->myself.dir = v_rotate(global->myself.dir, -ROT_SPEED);
 }

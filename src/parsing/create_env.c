@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:08:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 14:08:47 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:31:44 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_bool	set_params(char *str, t_env *env)
 		return (free(tmp), TRUE);
 	else if (env->EA.path == NULL && get_path(tmp, "EA", &env->EA.path) == TRUE)
 		return (free(tmp), TRUE);
-	else if (env->floor.set == False &&\
+	else if (env->floor.set == False && \
 			get_path(tmp, "F", &env->floor.input) == TRUE)
 		return (free(tmp), set_color(&env->floor));
-	else if (env->ceiling.set == False &&\
+	else if (env->ceiling.set == False && \
 			get_path(tmp, "C", &env->ceiling.input) == TRUE)
 		return (free(tmp), set_color(&env->ceiling));
 	else

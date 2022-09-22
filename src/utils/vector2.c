@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 09:20:26 by antoine           #+#    #+#             */
-/*   Updated: 2022/09/21 09:24:25 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:23:58 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 float	v_dot_product(t_vector u, t_vector v)
 {

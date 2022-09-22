@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:28:29 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 14:34:48 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:36:34 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void    ft_init_win_img(t_global *env)
+static void	ft_init_win_img(t_global *env)
 {
 	env->win = mlx_new_window(env->mlx, WIN_W, WIN_H, "cub3D");
 	if (!env->win)
-	return ;
+		return ;
 	env->img = mlx_new_image(env->mlx, WIN_W, WIN_H);
 	return ;
 }
 
-t_bool  init_mlx(t_global *global)
+t_bool	init_mlx(t_global *global)
 {
 	global->mlx = NULL;
 	global->win = NULL;
