@@ -6,47 +6,58 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:07:47 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 12:33:47 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:22:39 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	mini_map(t_global *env)
-// {
-// 	t_img	*img;
-// 	char	*grid[11] = {"1111111111",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1000000001",
-// 			"1001010001",
-// 			"1001000001",
-// 			"1000010001",
-// 			"1111111111"};
-// 	int	j;
-// 	int i;
+static int	get_width(t_global *global)
+{
+	int				x;
+	unsigned int	y;
+	int				tmp;
+
+	y = 0;
+	tmp = 0;
+	while (y < global->env.height)
+	{
+		x = 0;
+		while (global->env.map[y][x])
+			x++;
+		if (x > tmp)
+			tmp = x;
+		y++;
+	}
+	if (tmp * 16 < 0.9 * WIN_W && global->env.height * 16 < 0.9 * WIN_H)
+		return (tmp);
+	return (-1);
+}
+
+void	mini_map(t_global *global)
+{
+	unsigned int	j;
+	int 			i;
+	int			width;
+	// t_img *img;
 	
-// 	img = mlx_new_image(env->mlx, 300, 400);
-// 	printf("size line: %d\n", img->size_line);
-// 	printf("bits per pixel: %d\n", img->bpp);
-// 	printf("width: %d\n", img->width);
-// 	printf("height: %d\n", img->height);
-// 	j = 0;
-// 	while (grid[j / 20])
-// 	{
-// 		i = 0;
-// 		while (grid[i / 20])
-// 		{
-// 			if (grid[i / 20][j / 20] == '1')
-// 				pixel_put(img, i, j, 0x00FF0000);
-// 			else 
-// 				pixel_put(img, i, j, 0x000000000);
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	mlx_put_image_to_window(env->mlx, env->win, img, 0, 0);
-// 	mlx_loop(env->mlx);
-// }
+	j = 0;
+	width = get_width(global);
+	// img = mlx_new_image(global->mlx, 0.9 * WIN_H, 0.9 * WIN_W);
+	if (width == -1)
+		return;
+	while (global->env.map[j / 16])
+	{
+		i = 0;
+		while (global->env.map[j/16][i / 16])
+		{
+			if (global->env.map[j / 16][i / 16] == '1')
+				pixel_put(global->img, i + (WIN_W - width * 16) / 2, j + (WIN_H - global->env.height*16) / 2, 0x00FFD700);
+			// else 
+				// pixel_put(global->img, i + (WIN_W - width * 16) / 2, j + (WIN_H - global->env.height*16) / 2, 0x000000000);
+			i++;
+		}
+		j++;
+	}
+	// mlx_put_image_to_window(global->mlx, global->win, img, 0.05 * WIN_H, 0.05 * WIN_W);
+}
