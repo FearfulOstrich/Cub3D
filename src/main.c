@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:38:55 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:19:02 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 08:59:36 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static t_bool	init_global(t_global *global)
 	global->env.ceiling.set = FALSE;
 	if (init_mlx(global) == FALSE)
 		return (FALSE);
+	global->counter = 0;
 	return (TRUE);
 }
 
