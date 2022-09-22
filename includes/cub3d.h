@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 16:23:57 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:59:56 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@
 # define MINIMAP_H	100
 # define MINIMAP_W	150
 // Rendering constants
-# define UNIT_SIZE	64
 # define FOV_RATIO	0.66
-# define HEIGHT_MOD	1
+// Minimap constants
+# define TILE_SIZE	16
+# define WALL_C1	0x00DEDED2
+# define WALL_C2	0x00848484
+# define FLOOR_C	0x00DEDED2
 // Hook constants
 # define ON_KEYPRESS	2
 # define ON_KEYRELEASE	3
@@ -129,6 +132,14 @@ typedef struct s_RC
 	t_edge		wall;
 	int			wall_height;
 }	t_RC;
+
+typedef struct s_minimap
+{
+	unsigned int	height;
+	unsigned int	width;
+	unsigned int	offset_height;
+	unsigned int	offset_width;
+}	t_minimap;
 
 // Parsing
 t_bool	valid_map(t_env env);

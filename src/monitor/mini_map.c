@@ -6,47 +6,69 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:07:47 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 12:33:47 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:09:47 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	mini_map(t_global *env)
-// {
-// 	t_img	*img;
-// 	char	*grid[11] = {"1111111111",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1001010001",
-// 			"1000000001",
-// 			"1001010001",
-// 			"1001000001",
-// 			"1000010001",
-// 			"1111111111"};
-// 	int	j;
-// 	int i;
+static	void	draw_minimap_wall(int y, int x, t_global *global)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	j = -1;
+	while (++j < TILE_SIZE)
+	{
+		i = -1;
+		while (++i < TILE_SIZE)
+		{
+			if (i == 0 || j == 0 || i == TILE_SIZE - 1 || j == TILE_SIZE - 1)
+				pixel_put();
+		}
+	}
+}
+
+static unsigned int	get_minimap(t_global *global)
+{
+	unsigned int	i;
+	t_minimap		minimap;
+
+	i = -1;
+	minimap.height = global->env.height;
+	minimap.width = 0;
+	while (++i < minimap.height)
+		if (ft_strlen(global->env.map[i]) > tmp)
+			minimap.width = ft_strlen(global->env.map[i]);
 	
-// 	img = mlx_new_image(env->mlx, 300, 400);
-// 	printf("size line: %d\n", img->size_line);
-// 	printf("bits per pixel: %d\n", img->bpp);
-// 	printf("width: %d\n", img->width);
-// 	printf("height: %d\n", img->height);
-// 	j = 0;
-// 	while (grid[j / 20])
-// 	{
-// 		i = 0;
-// 		while (grid[i / 20])
-// 		{
-// 			if (grid[i / 20][j / 20] == '1')
-// 				pixel_put(img, i, j, 0x00FF0000);
-// 			else 
-// 				pixel_put(img, i, j, 0x000000000);
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	mlx_put_image_to_window(env->mlx, env->win, img, 0, 0);
-// 	mlx_loop(env->mlx);
-// }
+	return (minimap);
+}
+
+void	draw_minimap(t_global *global)
+{
+	t_minimap		minimap;
+	unsigned int	i;
+	unsigned int	j;
+
+	minimap = get_minimap(global);
+	minimap.height = global->env.height;
+	if (minimap.width * TILE_SIZE > 0.9 * WIN_W ||\
+		minimap.height * TILE_SIZE > 0.9 * WIN_H)
+		return ;
+	j = -1;
+	while (++j < minimap.height)
+	{
+		i = -1;
+		while (global->env.map[j][++i] != '\0')
+		{
+			if (global->env.map[j][i] == ' ')
+				continue ;
+			else if (global->env.map[j][i] == '1')
+				draw_minimap_wall(j, i, global, minimap);
+			else
+				draw_minimap_floor(j, i, global, minimap);
+		}
+	}
+	draw_position();
+	return ;
+}
