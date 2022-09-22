@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 16:59:56 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:26:43 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,8 @@ t_bool	parse_file(char *fname, t_global *global);
 t_bool	init_character(t_global *global);
 
 // Window monitoring
-void	mini_map(t_global *env);
-void	draw_background(t_global *env);
+void	mini_map(t_global *global);
+void	draw_background(t_global *global);
 t_bool	init_mlx(t_global *global);
 t_bool	monitor(t_global *global);
 //// hooks
