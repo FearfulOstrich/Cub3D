@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 22:28:16 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 08:58:47 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_global
 	void		*mlx;
 	void		*win;
 	t_img		*img;
+	int			counter;
 }	t_global;
 
 typedef struct s_edge

@@ -1,7 +1,7 @@
-NO ./textures/wood.xpm
-SO ./textures/brick_wall.xpm
-WE ./textures/tag.xpm
-EA ./textures/egyptian_wall.xpm
+NO ./textures/aalleon256.xpm
+SO ./textures/jbouyer256.xpm
+WE ./textures/alefranc256.xpm
+EA ./textures/lmarecha256.xpm
 
 F 200,200,200
 C 255,255,255

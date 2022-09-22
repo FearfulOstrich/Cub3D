@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:03:16 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 09:05:39 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	render_next_frame(t_global *global)
 {
+	global->counter++;
 	update_pos(global);
 	update_dir(global);
+	printf("[%d]pos(%f,%f)dir(%f,%f)\n", global->counter, global->myself.pos.x,\
+			global->myself.pos.y, global->myself.dir.x, global->myself.dir.y);
 	draw_background(global);
 	draw_walls(global);
 	// minimap();
