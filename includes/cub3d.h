@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:29:35 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:53:35 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@
 # define FOV_RATIO	0.66
 // Minimap constants
 # define TILE_SIZE	16
-# define WALL_C1	0x00DEDED2
-# define WALL_C2	0x00848484
-# define FLOOR_C	0x00DEDED2
+# define WALL_C1	0x00138808
+# define WALL_C2	0x00FFA500
+# define FLOOR_C	0x00FFD700
+# define POS_C		0x00000000
+# define DIR_C		0x00FF0000
 // Hook constants
 # define ON_KEYPRESS	2
 # define ON_KEYRELEASE	3

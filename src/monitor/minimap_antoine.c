@@ -6,11 +6,37 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 17:27:58 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:28:14 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:54:47 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	draw_position(t_global *global, t_minimap minimap)
+{
+	int			j;
+	int			i;
+	t_vector	v;
+
+	j = -2;
+	while (++j < 2)
+	{
+		i = -2;
+		while (++i < 2)
+			pixel_put(global->img,\
+				minimap.offset_width + TILE_SIZE * global->myself.pos.x + i,\
+				minimap.offset_height + TILE_SIZE * global->myself.pos.y + j,\
+				POS_C);
+	}
+	i = 0;
+	while (++i < 10)
+	{
+		v = v_add(global->myself.pos, v_scale(global->myself.dir, 1.0 / i));
+		pixel_put(global->img, minimap.offset_width + TILE_SIZE * v.x,\
+			minimap.offset_height + TILE_SIZE * v.y, DIR_C);
+	}
+	return ;
+}
 
 static void	draw_minimap_wall(int y, int x, t_global *global,\
 									t_minimap minimap)
@@ -59,7 +85,7 @@ static void	draw_minimap_floor(int y, int x, t_global *global,\
 	return ;
 }
 
-static unsigned int	get_minimap(t_global *global)
+static t_minimap	get_minimap(t_global *global)
 {
 	unsigned int	i;
 	t_minimap		minimap;
@@ -68,10 +94,10 @@ static unsigned int	get_minimap(t_global *global)
 	minimap.height = global->env.height;
 	minimap.width = 0;
 	while (++i < minimap.height)
-		if (ft_strlen(global->env.map[i]) > tmp)
+		if (ft_strlen(global->env.map[i]) > minimap.width)
 			minimap.width = ft_strlen(global->env.map[i]);
-	minimap.offset_width = (WIN_W - minimap.width) / 2;
-	minimap.offset_height = (WIN_H - minimap.height) / 2;
+	minimap.offset_width = (WIN_W - minimap.width * TILE_SIZE) / 2;
+	minimap.offset_height = (WIN_H - minimap.height * TILE_SIZE) / 2;
 	return (minimap);
 }
 
@@ -100,6 +126,6 @@ void	draw_minimap(t_global *global)
 				draw_minimap_floor(j, i, global, minimap);
 		}
 	}
-	// draw_position();
+	draw_position(global, minimap);
 	return ;
 }
