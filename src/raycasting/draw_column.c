@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:03:17 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 09:11:27 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ static void	draw_texture_pixel(int h, t_RC tools_RC, t_global *global)
 	w_ratio = get_w_ratio(tools_RC, global);
 	texture = get_texture(tools_RC, global);
 	pix_color = get_texture_color(texture, h_ratio, w_ratio);
-	pixel_put(global->img, tools_RC.s, (WIN_H / 2) + h, pix_color);
+	if (h < WIN_H / 2 && h >= -WIN_H / 2)
+		pixel_put(global->img, tools_RC.s, (WIN_H / 2) + h, pix_color);
+	return ;
 }
 
 void	draw_column(t_RC tools_RC, t_global *global)
