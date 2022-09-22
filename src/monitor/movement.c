@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:32:02 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/21 22:24:56 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:30:04 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ static t_bool	is_feasible(t_vector pos, t_global *global)
 	unsigned int	theta;
 	t_vector		dv;
 
-	theta = -1;
-	while (++theta < 360)
+	theta = 0;
+	while (theta < 360)
 	{
 		dv = v_scale(v_rotate(v_create(1, 0), theta), SAFE_RADIUS);
 		if (is_wall(v_add(pos, dv), global->env.map) == TRUE)
 			return (FALSE);
+		theta += 5;
 	}
 	return (TRUE);
 }

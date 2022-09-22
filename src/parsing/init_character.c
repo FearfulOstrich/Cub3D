@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:20:41 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 22:27:26 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:00:14 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static t_vector	get_dir_vector(char c)
 	else if (c == 'S')
 		dir.y = 1;
 	else if (c == 'W')
-		dir.x = 1;
-	else
 		dir.x = -1;
+	else
+		dir.x = 1;
 	return (dir);
 }
 
@@ -60,6 +60,8 @@ t_bool	init_vectors(t_character *myself, t_env env)
 			}
 		}
 	}
+	if (set_pos == FALSE)
+		return (FALSE);
 	return (TRUE);
 }
 

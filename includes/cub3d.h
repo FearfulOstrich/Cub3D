@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 08:58:47 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:56:28 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define TRUE	1
 # define FALSE	0
 // Image dimensions constants
-# define WIN_H		576
-# define WIN_W		1024
+# define WIN_H		1024
+# define WIN_W		2048
 # define MINIMAP_H	100
 # define MINIMAP_W	150
 // Rendering constants
@@ -41,7 +41,7 @@
 //movement constants
 # define ROT_SPEED		10
 # define TRANS_SPEED	0.2
-# define SAFE_RADIUS	0.1
+# define SAFE_RADIUS	0.15
 
 typedef struct s_pos
 {
