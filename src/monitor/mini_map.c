@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:07:47 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 16:22:39 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:28:26 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	mini_map(t_global *global)
 	int 			i;
 	int			width;
 	// t_img *img;
-	
+
 	j = 0;
 	width = get_width(global);
 	// img = mlx_new_image(global->mlx, 0.9 * WIN_H, 0.9 * WIN_W);
@@ -53,7 +53,7 @@ void	mini_map(t_global *global)
 		{
 			if (global->env.map[j / 16][i / 16] == '1')
 				pixel_put(global->img, i + (WIN_W - width * 16) / 2, j + (WIN_H - global->env.height*16) / 2, 0x00FFD700);
-			// else 
+			// else
 				// pixel_put(global->img, i + (WIN_W - width * 16) / 2, j + (WIN_H - global->env.height*16) / 2, 0x000000000);
 			i++;
 		}

@@ -47,7 +47,8 @@ SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
 				errors.c valid_color.c valid_map.c valid_texture.c\
 				init_character.c
 
-SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c movement.c
+SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c\
+				movement.c minimap_antoine.c
 
 SRC_UTILS	=	vector.c show_env.c clean_global.c draw.c show_character.c\
 				vector2.c

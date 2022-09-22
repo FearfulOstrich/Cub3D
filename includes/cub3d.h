@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 14:55:52 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 18:10:04 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@
 // Image dimensions constants
 # define WIN_H		1024
 # define WIN_W		2048
-# define MINIMAP_H	100
-# define MINIMAP_W	150
 // Rendering constants
-# define UNIT_SIZE	64
 # define FOV_RATIO	0.66
-# define HEIGHT_MOD	1
+// Minimap constants
+# define TILE_SIZE	16
+# define WALL_C1	0x00138808
+# define WALL_C2	0x00FFA500
+# define FLOOR_C	0x00FFD700
+# define POS_C		0x00000000
+# define DIR_C		0x00FF0000
 // Hook constants
 # define ON_KEYPRESS	2
 # define ON_KEYRELEASE	3
@@ -39,7 +42,7 @@
 # define ON_DESTROY		17
 # define PI	3.14159265358
 //movement constants
-# define ROT_SPEED		10
+# define ROT_SPEED		4
 # define TRANS_SPEED	0.2
 # define SAFE_RADIUS	0.15
 
@@ -131,6 +134,14 @@ typedef struct s_RC
 	int			wall_height;
 }	t_RC;
 
+typedef struct s_minimap
+{
+	unsigned int	height;
+	unsigned int	width;
+	unsigned int	offset_height;
+	unsigned int	offset_width;
+}	t_minimap;
+
 // Parsing
 t_bool	valid_map(t_env env);
 t_bool	valid_color(t_color color);
@@ -146,8 +157,9 @@ t_bool	parse_file(char *fname, t_global *global);
 t_bool	init_character(t_global *global);
 
 // Window monitoring
-void	mini_map(t_global *env);
-void	draw_background(t_global *env);
+void	mini_map(t_global *global);
+void	draw_minimap(t_global *global);
+void	draw_background(t_global *global);
 t_bool	init_mlx(t_global *global);
 t_bool	monitor(t_global *global);
 //// hooks
