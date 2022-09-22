@@ -6,13 +6,13 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 15:44:19 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:24:05 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int get_texture_color(t_texture texture, float h_ratio, float w_ratio)
+static int	get_texture_color(t_texture texture, float h_ratio, float w_ratio)
 {
 	char	*pix;
 	t_pos	pix_pos;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_global.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:51:04 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 12:38:19 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:28:53 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	clean_env(t_env *env, void *mlx)
 	return ;
 }
 
-void    clean_global(t_global *global)
+void	clean_global(t_global *global)
 {
 	clean_env(&global->env, global->mlx);
 	// clean_character();

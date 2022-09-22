@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 15:26:11 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:23:35 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	render_next_frame(t_global *global)
 	return (0);
 }
 
-t_bool  monitor(t_global *global)
+t_bool	monitor(t_global *global)
 {
 	mlx_hook(global->win, ON_KEYPRESS, 1L << 0, key_hook_press, global);
 	mlx_hook(global->win, ON_KEYRELEASE, 1L << 1, key_hook_release, global);

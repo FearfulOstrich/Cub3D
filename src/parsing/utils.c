@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:34:10 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 12:44:32 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 12:32:42 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_bool	is_line_empty(char *str)
 
 t_bool	params_all_set(t_env env)
 {
-	if (env.NO.path && env.SO.path && env.WE.path && env.EA.path\
+	if (env.NO.path && env.SO.path && env.WE.path && env.EA.path \
 		&& env.floor.set && env.ceiling.set)
 		return (TRUE);
 	else
