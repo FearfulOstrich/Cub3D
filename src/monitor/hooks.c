@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 11:32:36 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 15:52:31 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	key_hook_press(int key, t_global *global)
 		global->myself.right_press = TRUE;
 	if (key == 65361)
 		global->myself.left_press = TRUE;
+	if (key == 109 && global->myself.minimap == FALSE)
+		global->myself.minimap = TRUE;	
+	else if (key == 109 && global->myself.minimap == TRUE)
+		global->myself.minimap = FALSE;
 	return (0);
 }
 

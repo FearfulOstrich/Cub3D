@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:35:56 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 15:50:23 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	render_next_frame(t_global *global)
 			global->myself.pos.y, global->myself.dir.x, global->myself.dir.y);
 	draw_background(global);
 	draw_walls(global);
+	if (global->myself.minimap == TRUE)
+		mini_map(global);
 	mlx_put_image_to_window(global->mlx, global->win, global->img, 0, 0);
-	// minimap();
 	return (0);
 }
 

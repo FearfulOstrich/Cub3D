@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:41:51 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 14:55:52 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_character
 	t_bool		d_press;
 	t_bool		right_press;
 	t_bool		left_press;
+	t_bool		minimap;
 }	t_character;
 
 typedef struct s_global

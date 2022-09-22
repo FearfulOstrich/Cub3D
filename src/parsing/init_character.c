@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_character.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:20:41 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:00:14 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 15:52:05 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_bool	init_character(t_global *global)
 	myself.d_press = FALSE;
 	myself.right_press = FALSE;
 	myself.left_press = FALSE;
+	myself.minimap = FALSE;
 	global->myself = myself;
 	return (TRUE);
 }
