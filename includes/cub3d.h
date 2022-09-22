@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:53:35 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 18:10:04 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 // Image dimensions constants
 # define WIN_H		1024
 # define WIN_W		2048
-# define MINIMAP_H	100
-# define MINIMAP_W	150
 // Rendering constants
 # define FOV_RATIO	0.66
 // Minimap constants
@@ -44,7 +42,7 @@
 # define ON_DESTROY		17
 # define PI	3.14159265358
 //movement constants
-# define ROT_SPEED		10
+# define ROT_SPEED		4
 # define TRANS_SPEED	0.2
 # define SAFE_RADIUS	0.15
 
