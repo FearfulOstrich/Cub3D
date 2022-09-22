@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:21:45 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 14:00:36 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:44:51 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ t_bool	is_wall(t_vector pos, t_edge edge, t_env env)
 		else
 			ix_x = round(v_add(pos, edge.v_edge).x) - 1;
 	}
-	printf("checking map idx: (%d, %d)\n", ix_y, ix_x);
-	printf("horizontal slice of map at ix %d: %s\n", ix_y, env.map[ix_y]);
 	if (env.map[ix_y][ix_x] == '1')
 		return (TRUE);
 	return (FALSE);
@@ -91,10 +89,6 @@ t_edge	find_wall(t_vector pos, t_RC tools_RC, t_env env)
 	edge = init_edge(tools_RC);
 	while (1)
 	{
-		printf("now checking:\n");
-		printf("\tv_edge = ( dx0 + %u * dx; dy0 + %u * dy)", edge.c_x, edge.c_y);
-		printf(" = ( %f, %f )\n", edge.v_edge.x, edge.v_edge.y);
-		fflush(stdout);
 		if (is_wall(pos, edge, env))
 			return (edge);
 		update_edge(&edge, tools_RC);

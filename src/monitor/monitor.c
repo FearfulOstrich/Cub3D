@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:03:16 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:48:41 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	render_next_frame(t_global *global)
 {
 	update_pos(global);
 	update_dir(global);
+	printf("pos(%f,%f)dir(%f,%f)\n", global->myself.pos.x,\
+            global->myself.pos.y, global->myself.dir.x, global->myself.dir.y);
 	draw_background(global);
 	draw_walls(global);
 	// minimap();

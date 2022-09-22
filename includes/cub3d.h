@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/21 17:18:07 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/21 17:46:33 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define ON_DESTROY		17
 # define PI	3.14159265358
 //movement constants
-# define ROT_SPEED 1
+# define ROT_SPEED 2
 # define TRANS_SPEED 0.2
 
 typedef struct s_pos

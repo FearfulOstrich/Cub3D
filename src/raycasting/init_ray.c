@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:01:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 17:24:03 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 11:45:32 by jbouyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,12 @@ t_RC	init_RC_env(t_character me, int s)
 {
 	t_RC	env;
 
-	printf("Initializing ray.\n");
 	env.camX = (2 * (float)(s) / (WIN_W - 1)) - 1;
-	printf("camX: %f\n", env.camX);
 	env.ray = v_add(me.dir, v_scale(me.plane, me.FOV_ratio * env.camX));
-	printf("ray looking towards: ( %f, %f )\n", env.ray.x, env.ray.y);
 	env.dx0 = get_dX0(me, env.ray);
-	printf("To first constant X: (%f, %f).\n", env.dx0.x, env.dx0.y);
 	env.dx = get_dX(env.ray);
-	printf("To next X: (%f, %f).\n", env.dx.x, env.dx.y);
 	env.dy0 = get_dY0(me, env.ray);
-	printf("To first constant Y: (%f, %f).\n", env.dy0.x, env.dy0.y);
 	env.dy = get_dY(env.ray);
-	printf("To next Y: (%f, %f).\n", env.dy.x, env.dy.y);
 	env.s = s;
 	return (env);
 }
