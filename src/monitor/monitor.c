@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:40:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 16:23:35 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:29:18 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	render_next_frame(t_global *global)
 			global->myself.pos.y, global->myself.dir.x, global->myself.dir.y);*/
 	draw_background(global);
 	draw_walls(global);
+	if (global->myself.minimap == TRUE)
+		// mini_map(global);
+		draw_minimap(global);
 	mlx_put_image_to_window(global->mlx, global->win, global->img, 0, 0);
-	// minimap();
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:26:43 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/22 17:29:35 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_character
 	t_bool		d_press;
 	t_bool		right_press;
 	t_bool		left_press;
+	t_bool		minimap;
 }	t_character;
 
 typedef struct s_global
@@ -157,6 +158,7 @@ t_bool	init_character(t_global *global);
 
 // Window monitoring
 void	mini_map(t_global *global);
+void	draw_minimap(t_global *global);
 void	draw_background(t_global *global);
 t_bool	init_mlx(t_global *global);
 t_bool	monitor(t_global *global);
