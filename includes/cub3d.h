@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 13:50:08 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/23 11:00:02 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/23 11:57:37 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define FALSE		0
 // Image dimensions constants
 # define WIN_H 		1024
-# define WIN_W 		2048
+# define WIN_W 		1950
 // Rendering constants
 # define FOV_RATIO	0.66
 // Minimap constants
