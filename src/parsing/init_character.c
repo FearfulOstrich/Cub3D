@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_character.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:20:41 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 15:52:05 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:47:09 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_bool	init_character(t_global *global)
 	if (init_vectors(&myself, global->env) == FALSE)
 		return (map_error());
 	myself.plane = v_rotate(myself.dir, 90);
-	myself.FOV_ratio = FOV_RATIO;
+	myself.fov_ratio = FOV_RATIO;
 	myself.w_press = FALSE;
 	myself.a_press = FALSE;
 	myself.s_press = FALSE;

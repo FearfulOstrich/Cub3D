@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 10:23:53 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/20 14:12:28 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:47:58 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_bool	valid_color(t_color color)
 {
-	if (color.R > 255 || color.R < 0)
+	if (color.r > 255 || color.r < 0)
 		return (FALSE);
-	if (color.G > 255 || color.G < 0)
+	if (color.g > 255 || color.g < 0)
 		return (FALSE);
-	if (color.B > 255 || color.B < 0)
+	if (color.b > 255 || color.b < 0)
 		return (FALSE);
 	return (TRUE);
 }

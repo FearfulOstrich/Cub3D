@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:27:54 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 12:34:08 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:48:49 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	color_to_int(t_color color)
 {
-	return (color.R << 16 | color.G << 8 | color.B);
+	return (color.r << 16 | color.g << 8 | color.b);
 }
 
 void	draw_background(t_global *global)

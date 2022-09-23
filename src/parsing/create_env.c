@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:08:35 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:31:44 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 11:34:23 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static t_bool	set_params(char *str, t_env *env)
 	char	*tmp;
 
 	tmp = ft_strtrim(str, " \n");
-	if (env->NO.path == NULL && get_path(tmp, "NO", &env->NO.path) == TRUE)
+	if (env->no.path == NULL && get_path(tmp, "NO", &env->no.path) == TRUE)
 		return (free(tmp), TRUE);
-	else if (env->SO.path == NULL && get_path(tmp, "SO", &env->SO.path) == TRUE)
+	else if (env->so.path == NULL && get_path(tmp, "SO", &env->so.path) == TRUE)
 		return (free(tmp), TRUE);
-	else if (env->WE.path == NULL && get_path(tmp, "WE", &env->WE.path) == TRUE)
+	else if (env->we.path == NULL && get_path(tmp, "WE", &env->we.path) == TRUE)
 		return (free(tmp), TRUE);
-	else if (env->EA.path == NULL && get_path(tmp, "EA", &env->EA.path) == TRUE)
+	else if (env->ea.path == NULL && get_path(tmp, "EA", &env->ea.path) == TRUE)
 		return (free(tmp), TRUE);
 	else if (env->floor.set == False && \
 			get_path(tmp, "F", &env->floor.input) == TRUE)
@@ -54,7 +54,7 @@ static t_bool	set_params(char *str, t_env *env)
 		return (free(tmp), FALSE);
 }
 
-static char	*free_GNL(int fd, char *line)
+static char	*free_gnl(int fd, char *line)
 {
 	free(line);
 	return (get_next_line(fd));
@@ -70,15 +70,15 @@ t_bool	create_env(int fd, t_env *env)
 		if (is_line_empty(line) == FALSE)
 			if (set_params(line, env) == FALSE)
 				return (free(line), map_error());
-		line = free_GNL(fd, line);
+		line = free_gnl(fd, line);
 	}
 	while (line && is_line_empty(line) == TRUE)
-		line = free_GNL(fd, line);
+		line = free_gnl(fd, line);
 	while (line && is_line_empty(line) == FALSE)
 	{
 		if (fill_map(env, line) == FALSE)
 			return (free(line), map_error());
-		line = free_GNL(fd, line);
+		line = free_gnl(fd, line);
 	}
 	if (line != NULL)
 		return (free(line), TRUE);

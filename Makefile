@@ -47,17 +47,26 @@ SRC_PARSING	=	parse_file.c utils.c create_env.c validate_env.c\
 				errors.c valid_color.c valid_map.c valid_texture.c\
 				init_character.c
 
-SRC_MONITO	=	init_mlx.c monitor.c hooks.c mini_map.c draw_background.c\
-				movement.c minimap_antoine.c
+SRC_MONITO	=	init_mlx.c movement.c hooks.c draw_background.c\
 
 SRC_UTILS	=	vector.c show_env.c clean_global.c draw.c show_character.c\
 				vector2.c
+
+SRC_MAND	=	monitor.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
 				$(addprefix $(SRC_DIR)parsing/, $(SRC_PARSING))\
 				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
 				$(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
 				$(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
+				$(addprefix $(SRC_DIR)monitor/, $(SRC_MAND))
+
+SRC_BONUS	=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
+				$(addprefix $(SRC_DIR)parsing/, $(SRC_PARSING))\
+				$(addprefix $(SRC_DIR)raycasting/, $(SRC_RC))\
+				$(addprefix $(SRC_DIR)monitor/, $(SRC_MONITO))\
+				$(addprefix $(SRC_DIR)utils/, $(SRC_UTILS))\
+				$(addprefix $(SRC_DIR)bonus/, monitor_bonus.c minimap.c)\
 
 #------------------------------------#
 #               OBJECTS              #
@@ -65,6 +74,7 @@ SRC			=	$(addprefix $(SRC_DIR), $(SRC_MAIN))\
 
 OBJ_DIR		=	obj/
 OBJ			=	$(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
+OBJ_BONUS	=	$(subst $(SRC_DIR),$(OBJ_DIR),$(SRC_BONUS:.c=.o))
 
 #------------------------------------#
 #               HEADER               #
@@ -91,6 +101,9 @@ all: $(LIBFT_A) $(LIBMLX_A) $(NAME)
 $(NAME): $(OBJ) $(HEADER)
 		$(CC) $(CFLAG) $(OBJ) -o $(NAME) $(LIB_ARCHIVE) $(LNK_FLAG)
 
+bonus: $(OBJ_BONUS) $(HEADER)
+		$(CC) $(CFLAG) $(OBJ_BONUS) -o $(NAME)_BONUS $(LIB_ARCHIVE) $(LNK_FLAG)
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 	@mkdir -p `dirname $@`
 	$(CC) $(CFLAG) -c $< -o $@ $(INC_FLAG)
@@ -108,6 +121,7 @@ clean:
 
 fclean: clean
 		rm -rf $(NAME)
+		rm -rf $(NAME)_BONUS
 		rm -rf $(LIBFT_A)
 		rm -rf $(LIBMLX_A)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:41:36 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 15:52:31 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:48:59 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	key_hook_press(int key, t_global *global)
 	if (key == 65361)
 		global->myself.left_press = TRUE;
 	if (key == 109 && global->myself.minimap == FALSE)
-		global->myself.minimap = TRUE;	
+		global->myself.minimap = TRUE;
 	else if (key == 109 && global->myself.minimap == TRUE)
 		global->myself.minimap = FALSE;
 	return (0);
@@ -58,12 +58,12 @@ int	key_hook_release(int key, t_global *global)
 int	mouse_hook(int key, int x, int y, t_global *global)
 {
 	(void)x, (void)y;
-	if (key == 5 && global->myself.FOV_ratio <= 3)
-		global->myself.FOV_ratio *= 1.3;
-	if (key == 4 && global->myself.FOV_ratio >= 0.3)
-		global->myself.FOV_ratio /= 1.3;
+	if (key == 5 && global->myself.fov_ratio <= 3)
+		global->myself.fov_ratio *= 1.3;
+	if (key == 4 && global->myself.fov_ratio >= 0.3)
+		global->myself.fov_ratio /= 1.3;
 	if (key == 2)
-		global->myself.FOV_ratio = FOV_RATIO;
+		global->myself.fov_ratio = FOV_RATIO;
 	return (0);
 }
 

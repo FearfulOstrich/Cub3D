@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:38:55 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:02:19 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 11:01:35 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 static t_bool	init_global(t_global *global)
 {
 	global->env.map = ft_calloc(1, sizeof(*(global->env.map)));
-	global->env.NO.path = NULL;
-	global->env.NO.img = NULL;
-	global->env.SO.path = NULL;
-	global->env.SO.img = NULL;
-	global->env.WE.path = NULL;
-	global->env.WE.img = NULL;
-	global->env.EA.path = NULL;
-	global->env.EA.img = NULL;
+	global->env.no.path = NULL;
+	global->env.no.img = NULL;
+	global->env.so.path = NULL;
+	global->env.so.img = NULL;
+	global->env.we.path = NULL;
+	global->env.we.img = NULL;
+	global->env.ea.path = NULL;
+	global->env.ea.img = NULL;
 	global->env.floor.input = NULL;
 	global->env.floor.set = FALSE;
 	global->env.ceiling.input = NULL;
@@ -47,10 +47,8 @@ int	main(int argc, char *argv[])
 		return (clean_global(&global), 2);
 	if (parse_file(argv[1], &global) == FALSE)
 		return (clean_global(&global), 3);
-	show_env(global.env);
 	if (init_character(&global) == FALSE)
 		return (clean_global(&global), 4);
-	show_character(global.myself);
 	if (init_mlx(&global) == FALSE)
 		return (clean_global(&global), 5);
 	if (monitor(&global) == FALSE)

@@ -6,7 +6,7 @@
 /*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:32:02 by jbouyer           #+#    #+#             */
-/*   Updated: 2022/09/22 16:23:57 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/23 11:04:51 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,22 @@ void	update_pos(t_global *global)
 {
 	t_vector	direction;
 
-	if (global->myself.w_press == TRUE && global->myself.a_press == FALSE)
+	if (global->myself.w_press == TRUE && global->myself.s_press == FALSE)
 	{
 		direction = v_scale(global->myself.dir, TRANS_SPEED);
 		global->myself.pos = get_new_pos(direction, global);
 	}
-	if (global->myself.a_press == TRUE && global->myself.w_press == FALSE)
+	if (global->myself.a_press == TRUE && global->myself.d_press == FALSE)
 	{
 		direction = v_scale(v_rotate(global->myself.dir, -90), TRANS_SPEED);
 		global->myself.pos = get_new_pos(direction, global);
 	}
-	if (global->myself.s_press == TRUE && global->myself.d_press == FALSE)
+	if (global->myself.s_press == TRUE && global->myself.w_press == FALSE)
 	{
 		direction = v_scale(v_scale(global->myself.dir, -1), TRANS_SPEED);
 		global->myself.pos = get_new_pos(direction, global);
 	}
-	if (global->myself.d_press == TRUE && global->myself.s_press == FALSE)
+	if (global->myself.d_press == TRUE && global->myself.a_press == FALSE)
 	{
 		direction = v_scale(v_rotate(global->myself.dir, 90), TRANS_SPEED);
 		global->myself.pos = get_new_pos(direction, global);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:34:10 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:32:42 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:47:42 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_bool	set_color(t_color *color)
 		return (FALSE);
 	if (ft_tab_len(rgb) != 3)
 		return (ft_free_tab(rgb), FALSE);
-	color->R = check_color(rgb[0]);
-	color->G = check_color(rgb[1]);
-	color->B = check_color(rgb[2]);
+	color->r = check_color(rgb[0]);
+	color->g = check_color(rgb[1]);
+	color->b = check_color(rgb[2]);
 	color->set = TRUE;
 	ft_free_tab(rgb);
 	return (TRUE);
@@ -70,7 +70,7 @@ t_bool	is_line_empty(char *str)
 
 t_bool	params_all_set(t_env env)
 {
-	if (env.NO.path && env.SO.path && env.WE.path && env.EA.path \
+	if (env.no.path && env.so.path && env.we.path && env.ea.path \
 		&& env.floor.set && env.ceiling.set)
 		return (TRUE);
 	else

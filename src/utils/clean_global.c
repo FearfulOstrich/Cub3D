@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_global.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:51:04 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:28:53 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:51:40 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	clean_env(t_env *env, void *mlx)
 {
 	if (env->map != NULL)
 		ft_free_tab(env->map);
-	clean_texture(&env->NO, mlx);
-	clean_texture(&env->SO, mlx);
-	clean_texture(&env->WE, mlx);
-	clean_texture(&env->EA, mlx);
+	clean_texture(&env->no, mlx);
+	clean_texture(&env->so, mlx);
+	clean_texture(&env->we, mlx);
+	clean_texture(&env->ea, mlx);
 	if (env->floor.input != NULL)
 		free(env->floor.input);
 	if (env->ceiling.input != NULL)
@@ -39,7 +39,6 @@ static void	clean_env(t_env *env, void *mlx)
 void	clean_global(t_global *global)
 {
 	clean_env(&global->env, global->mlx);
-	// clean_character();
 	if (global->img != NULL)
 		mlx_destroy_image(global->mlx, global->img);
 	if (global->win != NULL)

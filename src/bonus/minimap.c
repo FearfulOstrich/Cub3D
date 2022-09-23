@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_antoine.c                                  :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 17:27:58 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 17:54:47 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/23 11:20:24 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ static void	draw_position(t_global *global, t_minimap minimap)
 	{
 		i = -2;
 		while (++i < 2)
-			pixel_put(global->img,\
-				minimap.offset_width + TILE_SIZE * global->myself.pos.x + i,\
-				minimap.offset_height + TILE_SIZE * global->myself.pos.y + j,\
+			pixel_put(global->img, \
+				minimap.offset_width + TILE_SIZE * global->myself.pos.x + i, \
+				minimap.offset_height + TILE_SIZE * global->myself.pos.y + j, \
 				POS_C);
 	}
 	i = 0;
 	while (++i < 10)
 	{
 		v = v_add(global->myself.pos, v_scale(global->myself.dir, 1.0 / i));
-		pixel_put(global->img, minimap.offset_width + TILE_SIZE * v.x,\
+		pixel_put(global->img, minimap.offset_width + TILE_SIZE * v.x, \
 			minimap.offset_height + TILE_SIZE * v.y, DIR_C);
 	}
 	return ;
 }
 
-static void	draw_minimap_wall(int y, int x, t_global *global,\
+static void	draw_minimap_wall(int y, int x, t_global *global, \
 									t_minimap minimap)
 {
 	unsigned int	j;
@@ -63,7 +63,7 @@ static void	draw_minimap_wall(int y, int x, t_global *global,\
 	return ;
 }
 
-static void	draw_minimap_floor(int y, int x, t_global *global,\
+static void	draw_minimap_floor(int y, int x, t_global *global, \
 								t_minimap minimap)
 {
 	unsigned int	j;
@@ -109,7 +109,7 @@ void	draw_minimap(t_global *global)
 
 	minimap = get_minimap(global);
 	minimap.height = global->env.height;
-	if (minimap.width * TILE_SIZE > 0.9 * WIN_W ||\
+	if (minimap.width * TILE_SIZE > 0.9 * WIN_W || \
 		minimap.height * TILE_SIZE > 0.9 * WIN_H)
 		return ;
 	j = -1;

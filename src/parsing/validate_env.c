@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouyer <jbouyer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:09:43 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/22 12:32:04 by jbouyer          ###   ########.fr       */
+/*   Updated: 2022/09/23 10:48:26 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_bool	validate_env(t_env *env, void *mlx)
 {
-	if (valid_texture(&env->NO, mlx) == FALSE || \
-		valid_texture(&env->SO, mlx) == FALSE || \
-		valid_texture(&env->WE, mlx) == FALSE || \
-		valid_texture(&env->EA, mlx) == FALSE)
+	if (valid_texture(&env->no, mlx) == FALSE || \
+		valid_texture(&env->so, mlx) == FALSE || \
+		valid_texture(&env->we, mlx) == FALSE || \
+		valid_texture(&env->ea, mlx) == FALSE)
 		return (ft_putstr_fd("ERROR\nINVALID TEXTURE.\n", 1), FALSE);
 	if (valid_color(env->floor) == FALSE || valid_color(env->ceiling) == FALSE)
 		return (ft_putstr_fd("ERROR\nINVALID COLOR.\n", 1), FALSE);
