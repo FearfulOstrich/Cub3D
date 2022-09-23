@@ -101,7 +101,7 @@ all: $(LIBFT_A) $(LIBMLX_A) $(NAME)
 $(NAME): $(OBJ) $(HEADER)
 		$(CC) $(CFLAG) $(OBJ) -o $(NAME) $(LIB_ARCHIVE) $(LNK_FLAG)
 
-bonus: $(OBJ_BONUS) $(HEADER)
+bonus: $(LIBFT_A) $(LIBMLX_A) $(OBJ_BONUS) $(HEADER)
 		$(CC) $(CFLAG) $(OBJ_BONUS) -o $(NAME)_BONUS $(LIB_ARCHIVE) $(LNK_FLAG)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
