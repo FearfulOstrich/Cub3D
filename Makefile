@@ -10,7 +10,7 @@
 
 NAME			=	cub3D
 
-CC				=	gcc
+CC				=	clang
 CFLAG			=	-Wall -Wextra -Werror -g3
 PROJINC_FLAG	=	-I includes
 
